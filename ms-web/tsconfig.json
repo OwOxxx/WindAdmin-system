@@ -12,7 +12,6 @@
     "module": "ESNext",
     "isolatedModules":true,
     "moduleResolution": "node",
-    "types": ["vite/client"],
     "paths": {
       "@/*": ["src/*"]
     },

@@ -1,6 +1,11 @@
 <script setup lang="ts">
-import SideBar from './layouts/sidebar/SideBar.vue';
-import ToolBar from './layouts/toolbar/ToolBar.vue';
+import { useRouter } from 'vue-router';
+const router = useRouter()
+
+import SideBar from '@/layouts/sidebar/SideBar.vue';
+import ToolBar from '@/layouts/toolbar/ToolBar.vue';
+import Main from '@/layouts/Main.vue';
+
 
 </script>
 
@@ -21,7 +26,7 @@ import ToolBar from './layouts/toolbar/ToolBar.vue';
         </div>
       </div>
       <div class="content">
-        <RouterView />
+        <Main />
       </div>
     </main>
   </div>
@@ -50,6 +55,7 @@ aside {
 main {
   flex: 1;
   background-color: #fff;
+
   .main_head {
     display: flex;
     justify-content: space-between;
@@ -64,9 +70,9 @@ main {
       text-align: center;
     }
 
-    .right {
-
-    }
+    .right {}
   }
+
+  .content {}
 }
 </style>

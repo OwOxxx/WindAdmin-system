@@ -8,7 +8,7 @@
   ],
   "compilerOptions": {
     "composite": true,
-    "module": "esnext",
+    "module": "ESNext",
     "moduleResolution": "Bundler",
     "types": ["node"],
     "paths": {

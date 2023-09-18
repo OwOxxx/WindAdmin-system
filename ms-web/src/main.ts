@@ -1,23 +1,27 @@
 import { createApp } from "vue"
 
 import App from "./App.vue"
-import "./assets/css/common.scss"
+// 使用mock
+import useMock from "../mock/index"
+// router守卫
+import useGuard from "@/router/guard/index"
+// 创建pinia
+import { installPinia } from "@/store/index"
+// 全局注册
+import useGlobal from "@/utils/global"
+// vue-router
+import { installRouter } from "@/router/index"
 
-import ElementPlus from "element-plus"
-import "element-plus/dist/index.css"
-import 'element-plus/theme-chalk/dark/css-vars.css'
-
-// 全局导入图标
-import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
 
-const app = createApp(App)
-for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
-  app.component(key, component)
+function create() {
+	const app = createApp(App)
+	installRouter(app)
+	installPinia(app)
+	useGlobal(app)
+	useGuard()
+	useMock()
+	app.mount("#app")
 }
 
-
-
-app.use(ElementPlus)
-
-app.mount("#app")
+create()
