@@ -1,25 +1,36 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
+import SystemSet from "@/layouts/setting/SystemSet.vue"
+import { ref } from "vue";
 
-const theme_switch = ref(false);
-import { useDark, useToggle, useColorMode } from "@vueuse/core"
-const isDark = useDark()
-const colorMode = useColorMode({
-  // 自定义主题
-  // modes: {
-  //   dim: 'dim',
-  //   cafe: 'cafe'
-  // },
-  attribute: "theme"
-})
-const toggle = useToggle(isDark)
+const openSet = ref(false)
+const closeSet = () => {
+  openSet.value = false;
+}
 
 </script>
 
 <template>
-  <el-switch v-model="theme_switch" @change="toggle" active-action-icon="Moon" inactive-action-icon="Sunny"
-    style="--el-switch-on-color: #6d6d6d; --el-switch-off-color: #6d6d6d"/>
+  <div class="tools">
+    <SvgIcon name="search" class='fs20' />
+    <SvgIcon name="notification" class='fs20' />
+    <SvgIcon name="refresh" class='fs20' />
+    <SvgIcon name="fullScreen" class='fs20' />
+    <SvgIcon @click="openSet = true" name="setting" class='fs20' />
+  </div>
+  <SystemSet @closeSet="closeSet" :isOpen="openSet" />
 </template>
 
 <style lang="scss" scoped>
+.tools {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  width: 100%;
+  height: 100%;
+}
+
+.fs20 {
+  cursor: pointer;
+  font-size: 20px;
+}
 </style>

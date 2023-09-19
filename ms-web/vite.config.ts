@@ -8,6 +8,9 @@ import AutoImport from "unplugin-auto-import/vite"
 import Components from "unplugin-vue-components/vite"
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers"
 
+// svg图标插件
+import viteSvgIcons, { createSvgIconsPlugin } from "vite-plugin-svg-icons"
+
 // 引入图标
 // import IconsResolver from "unplugin-icons/resolver"
 // import Icons from "unplugin-icons/vite"
@@ -27,6 +30,11 @@ export default defineConfig({
 			resolvers: [ElementPlusResolver()],
 		}),
 		ElementPlus({ useSource: true }),
+		//引入SVG图标素材文件
+		createSvgIconsPlugin({
+			iconDirs: [path.resolve(process.cwd(), "src/icons")],
+			symbolId: "icon-[dir]-[name]",
+		})
 	],
 	server: {
 		open: true,
@@ -39,13 +47,13 @@ export default defineConfig({
 			},
 		},
 	},
-	// css: {
-	//   preprocessorOptions: {
-	//     scss: {
-	//       additionalData: `@use "~src/assets/css/common.scss" as *;`,
-	//     },
-	//   },
-	// },
+	css: {
+		preprocessorOptions: {
+			scss: {
+				additionalData: '@use "./src/styles/variables.scss" as *;',
+			},
+		},
+	},
 	resolve: {
 		alias: {
 			"@": path.resolve(__dirname, "src"),

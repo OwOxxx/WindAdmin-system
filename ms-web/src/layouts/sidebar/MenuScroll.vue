@@ -6,7 +6,7 @@ import { useSettingStore } from '@/store/modules/setting';
 const settingStore = useSettingStore();
 
 const mode = computed(() => {
-  if(settingStore.theme === 'classics') {
+  if(settingStore.theme === 'classic') {
     return 'vertical';
   } else if(settingStore.theme === 'topb') {
     return 'horizontal';

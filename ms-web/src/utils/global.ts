@@ -1,7 +1,7 @@
 // 注册全局属性等
 import { App } from "vue"
 // 全局样式
-import "@/assets/css/common.scss"
+import "@/styles/common.scss"
 
 // 引入element-plus
 import ElementPlus from "element-plus"
@@ -11,6 +11,9 @@ import "element-plus/theme-chalk/dark/css-vars.css"
 // 全局导入elementplus图标
 import * as ElementPlusIconsVue from "@element-plus/icons-vue"
 
+// 全局注册组件
+import SvgIcon from "@/components/svg-icon/index.vue"
+
 function registerElmentPlus(app: App) {
 	app.use(ElementPlus)
 	for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
@@ -18,6 +21,11 @@ function registerElmentPlus(app: App) {
 	}
 }
 
+function registerComponents(app: App) {
+	app.component("SvgIcon", SvgIcon)
+}
+
 export default function useGlobal(app: App) {
 	registerElmentPlus(app)
+	registerComponents(app)
 }

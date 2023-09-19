@@ -1,5 +1,6 @@
 import { createApp } from "vue"
 
+import './styles'
 import App from "./App.vue"
 // 使用mock
 import useMock from "../mock/index"
@@ -13,15 +14,10 @@ import useGlobal from "@/utils/global"
 import { installRouter } from "@/router/index"
 
 
-
-function create() {
-	const app = createApp(App)
-	installRouter(app)
-	installPinia(app)
-	useGlobal(app)
-	useGuard()
-	useMock()
-	app.mount("#app")
-}
-
-create()
+const app = createApp(App)
+installRouter(app)
+installPinia(app)
+useGlobal(app)
+useGuard()
+useMock()
+app.mount("#app")

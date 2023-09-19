@@ -1,0 +1,32 @@
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+	height: 100vh;
+}
+
+[theme="dark"] {
+	background: #304156;
+	color: #fff;
+}
+
+[theme="light"] {
+	background: #fff;
+	color: #000;
+}
+
+[theme="dim"] {
+	background: #ec8282;
+	color: #000;
+}
+
+[theme="cafe"] {
+	background: #2b1e1e;
+	color: #000;
+}

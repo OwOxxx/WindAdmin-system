@@ -4,13 +4,14 @@ const router = useRouter()
 
 import SideBar from '@/layouts/sidebar/SideBar.vue';
 import ToolBar from '@/layouts/toolbar/ToolBar.vue';
-import Main from '@/layouts/Main.vue';
+import MainView from '@/layouts/MainView.vue';
+import Avatar from '@/layouts/avatar/Avatar.vue'
 
 
 </script>
 
 <template>
-  <div id="container">
+  <div id="container_sub">
     <aside class="aside">
       <div class="aside_head"></div>
       <div class="sidebar_content">
@@ -23,19 +24,21 @@ import Main from '@/layouts/Main.vue';
         <div class="middle"></div>
         <div class="right">
           <ToolBar />
+          <Avatar />
         </div>
       </div>
       <div class="content">
-        <Main />
+        <MainView />
       </div>
     </main>
   </div>
 </template>
 
 <style lang="scss" scoped>
-#container {
+#container_sub {
   display: flex;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 }
 
 aside {
@@ -44,11 +47,11 @@ aside {
   border-right: 0.5px solid #ebeef5;
 
   .aside_head {
-    height: 60px;
+    height: $head-height;
   }
 
   .sidebar_content {
-    height: calc(100% - 60px);
+    height: calc(100% - $head-height);
   }
 }
 
@@ -58,19 +61,21 @@ main {
 
   .main_head {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 60px;
+    height: $head-height;
     border-bottom: 0.5px solid #ebeef5;
 
-    .left {}
+    .left {
+      flex: 1;
+    }
 
     .middle {
       flex: 1;
-      text-align: center;
     }
 
-    .right {}
+    .right {
+      display: flex;
+      margin: 0 20px;
+    }
   }
 
   .content {}

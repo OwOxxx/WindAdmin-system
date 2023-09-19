@@ -31,6 +31,7 @@
 		"unplugin-element-plus": "^0.8.0",
 		"unplugin-icons": "^0.17.0",
 		"unplugin-vue-components": "^0.25.2",
-		"vite-plugin-inspect": "^0.7.38"
+		"vite-plugin-inspect": "^0.7.38",
+		"vite-plugin-svg-icons": "^2.0.1"
 	}
 }

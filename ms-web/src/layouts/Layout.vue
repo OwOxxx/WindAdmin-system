@@ -11,10 +11,10 @@ console.log(settingStore.theme);
 
 <template>
   <div id="container">
-    <template v-if="settingStore.theme == 'classic'">
+    <template v-if="settingStore.getTheme == 'classic'">
       <ClassicTheme />
     </template>
-    <template v-else-if="settingStore.theme === 'topb'">
+    <template v-else-if="settingStore.getTheme == 'topb'">
       <TopBLayout />
     </template>
   </div>

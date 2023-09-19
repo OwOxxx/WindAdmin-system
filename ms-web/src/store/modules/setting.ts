@@ -2,7 +2,7 @@ import { defineStore } from "pinia"
 
 export const useSettingStore = defineStore("setting", {
 	state: () => ({
-		theme: "classic",  // classic, topb
+		theme: "topb",  // classic, topb
 	}),
 	getters: {
 		getTheme() {
