@@ -1,49 +1,43 @@
 import { defineStore } from "pinia"
 
-import appconfig from "@/config/appconfig"
-import { setDynamicRoutes } from "@/utils/tools"
+import { generateDynamicRoutes } from "@/utils/tools"
 import router from "@/router"
+import { post } from "@/api/http"
+import { getMenuListByRoleId } from "@/api/url"
+import { useUserStore } from "@/store/modules/user"
 
-export const useUserStore = defineStore("user", {
+export const usePermissionStore = defineStore("permission", {
 	state: () => ({
-		token: "",
-		userInfo: {},
-		roles: [],
-		routes: [],
+		permissionRoutes: [],
 	}),
 	getters: {
-		getToken() {
-			return this.token
-		},
-		getUserInfo() {
-			return this.userInfo
-		},
-		getRoles() {
-			return this.roles
-		},
-		getRoutes() {
-			return this.routes
-		},
+		getPermissionSideBar(state) {
+      return state.permissionRoutes.filter((it) => {
+        return it.meta && !it.meta.hidden
+      })
+    },
 	},
 	actions: {
-		setToken(token: String) {
-			this.token = token
+		async getRoutes(data: { userId: number; roleId: number }) {
+			try {
+				const res = await post({
+					url: getMenuListByRoleId,
+					data,
+				})
+				return res.data
+			} catch (error) {}
 		},
-		setUserInfo(userInfo: Object) {
-			this.userInfo = userInfo
-		},
-		setRoles(roles: Array<any>) {
-			this.roles = roles
-		},
-		setRoutes(routes: Array<any>) {
-			this.routes = routes
-		},
-		initPermissionRoutes() {
-			const tempAccess = setDynamicRoutes(appconfig.routes)
+		async initPermissionRoutes() {
+			const userStore = useUserStore()
+			const accessRoutes = await this.getRoutes({ userId: userStore.userId, roleId: userStore.roleId })
+			const tempAccess = generateDynamicRoutes(accessRoutes)
 			tempAccess.forEach(item => {
 				router.addRoute(item)
 			})
-			console.log(router.getRoutes())
+			this.permissionRoutes = [...tempAccess]
+		},
+		isEmptyPermissionRoute() {
+			return !this.permissionRoutes || this.permissionRoutes.length === 0
 		},
 	},
 })

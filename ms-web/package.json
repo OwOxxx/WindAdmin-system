@@ -16,6 +16,7 @@
 		"mockjs": "^1.1.0",
 		"path-browserify": "^1.0.1",
 		"pinia": "^2.1.6",
+		"pinia-plugin-persistedstate": "^3.2.0",
 		"qs": "^6.11.2",
 		"vite": "^4.4.9",
 		"vue": "^3.3.4",

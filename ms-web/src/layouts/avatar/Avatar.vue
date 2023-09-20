@@ -8,7 +8,7 @@ const pull_status = ref(true)
 <template>
   <div class="avatar">
     <span>
-      <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" />
+      <el-avatar :size="29" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" />
     </span>
     <el-dropdown>
       <span class="el-dropdown-link">
@@ -32,6 +32,7 @@ const pull_status = ref(true)
   height: 100%;
   display: flex;
   align-items: center;
+  gap: 8px;
   margin: 0 20px;
 }
 

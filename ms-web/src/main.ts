@@ -13,7 +13,6 @@ import useGlobal from "@/utils/global"
 // vue-router
 import { installRouter } from "@/router/index"
 
-
 const app = createApp(App)
 installRouter(app)
 installPinia(app)

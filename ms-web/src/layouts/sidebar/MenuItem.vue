@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import SvgIcon from '@/layouts/svg-icon/SvgIcon.vue';
 import router from '@/router';
 
 defineProps({
@@ -14,16 +13,16 @@ const generatorPath = () => {
   return ''
 }
 const handleClick = (item) => {
-  console.log(item.toPath)
-  router.push({ path: item.toPath, replace: true })
+  console.log(item.path)
+  router.push({ path: item.path, replace: true })
 }
 
 </script>
 
 <template>
-  <el-menu-item :index="item.name" class="menu-item-wrapper" @click="handleClick(item)">
-    <SvgIcon :icon="item.icon" />
-    <span class="title">{{ item.meta ? item.meta.title : item.name }}</span>
+  <el-menu-item :index="item.path" class="menu-item-wrapper" @click="handleClick(item)">
+    <SvgIcon :name="item.meta ? item.meta.icon : item.icon" />
+    <span class="title">{{ item.meta ? item.meta.title : item.title }}</span>
   </el-menu-item>
 </template>
 

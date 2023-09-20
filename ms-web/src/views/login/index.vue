@@ -51,7 +51,7 @@ import { post } from "@/api/http"
 import { login } from "@/api/url"
 import router from "@/router";
 
-import { useUserStore } from "@/store/modules/premission"
+import { useUserStore } from "@/store/modules/user"
 const userStore = useUserStore()
 
 // 表单校验
@@ -79,13 +79,15 @@ const submitFormLogin = async (formEl) => {
 			url: login,
 			data: loginForm.value
 		})
-		userStore.setToken(res.data.token)
 		if (res.code === 200) {
-			router.replace({ path: '/home/console'})
-			ElMessage({
-				type: "success",
-				message: res.msg
-			})
+			const success = await userStore.saveUser(res.data)
+			if (success) {
+				router.replace({ path: '/index/home' })
+				ElMessage({
+					type: "success",
+					message: res.msg
+				})
+			}
 		} else {
 			ElMessage({
 				type: "warning",

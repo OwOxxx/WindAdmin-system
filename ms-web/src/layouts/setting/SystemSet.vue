@@ -19,7 +19,6 @@ const settingStore = useSettingStore();
 const theme = ref(false);
 const changeTheme = (val) => {
   theme.value = val;
-  console.log(val);
   if (val) {
     settingStore.setTheme('topb');
   } else {
@@ -55,9 +54,9 @@ function confirmClick() {
 </script>
 
 <template>
-  <el-drawer v-model="drawer_switch" @close="$emit('closeSet')">
+  <el-drawer v-model="drawer_switch" @close="$emit('closeSet')" size="300">
     <template #header>
-      <h4>set title by slot</h4>
+      <h4>System Setting</h4>
     </template>
     <template #default>
       <el-switch v-model="theme_switch" @change="toggleColor" active-action-icon="Moon" inactive-action-icon="Sunny"
@@ -67,10 +66,6 @@ function confirmClick() {
       </el-switch>
     </template>
     <template #footer>
-      <div style="flex: auto">
-        <el-button @click="cancelClick">cancel</el-button>
-        <el-button type="primary" @click="confirmClick">confirm</el-button>
-      </div>
     </template>
   </el-drawer>
 </template>

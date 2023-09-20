@@ -3,15 +3,15 @@ import { ref } from 'vue';
 
 import MenuScroll from '@/layouts/sidebar/MenuScroll.vue';
 import SideBarItem from '@/layouts/sidebar/SideBarItem.vue';
-import appConfig from '@/config/appconfig.js';
+import { usePermissionStore } from '@/store/modules/premission';
 
-const routes: Array<any> = ref(appConfig.routes);
+const permissionStore = usePermissionStore()
 
 </script>
 
 <template>
   <MenuScroll>
-    <template v-for="(item,index) in routes" :key="index">
+    <template v-for="(item,index) in permissionStore.getPermissionSideBar" :key="item.path">
       <SideBarItem :item="item" />
     </template>
   </MenuScroll>

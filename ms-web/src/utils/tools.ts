@@ -1,6 +1,8 @@
 import { LAYOUT } from "@/store/common"
 import { resolve } from "path-browserify"
 
+import { toHump } from "@/utils/index"
+
 export function loadComponents() {
 	return import.meta.glob("/src/views/**/*.vue")
 }
@@ -13,28 +15,42 @@ export function getComponent(it) {
 
 export function getFilePath(it) {
 	if (!it.localFilePath) {
-		return
-		// it.localFilePath = it?.menuUrl
+		it.localFilePath = it?.menuUrl
 	}
 	it.localFilePath = resolve("/", it.localFilePath)
-	return "/src" + it.localFilePath + ".vue"
+	return "/src/views" + it.localFilePath + ".vue"
 }
 
 export function isMenu(it) {
 	if (it.children && it.children.length > 0) return true
 }
 
-export function setDynamicRoutes(routes) {
-	console.log(routes)
-	return routes.map(item => {
-		const isMenuFlag = isMenu(item)
+export function getNameByUrl(menuUrl: string) {
+	const temp = menuUrl.split("/")
+	return toHump(temp[temp.length - 1])
+}
+
+export function generateDynamicRoutes(routes) {
+	return routes.map(it => {
+		const isMenuFlag = isMenu(it)
 		let route = {
-			path: item.path,
-			name: item.name,
-			component: isMenuFlag ? LAYOUT : getComponent(item) || (() => import("@/views/exception/404.vue")),
+			path: it.menuUrl,
+			name: it.routeName || getNameByUrl(it.menuUrl),
+			component: isMenuFlag ? LAYOUT : getComponent(it),
+			meta: {
+				hidden: !!it.hidden,
+				title: it.menuName,
+				affix: !!it.affix,
+				cacheable: !!it.cacheable,
+				icon: it.icon || "menu",
+				iconPrefix: it.iconPrefix || "iconfont",
+				badge: it.badge,
+				isRootPath: !!it.isRootPath,
+				isSingle: !!it.isSingle,
+			},
 		}
-		if (item.children && item.children.length > 0) {
-			route.children = setDynamicRoutes(item.children)
+		if (it.children && it.children.length > 0) {
+			route.children = generateDynamicRoutes(it.children)
 		}
 		return route
 	})

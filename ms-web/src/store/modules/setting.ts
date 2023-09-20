@@ -14,4 +14,5 @@ export const useSettingStore = defineStore("setting", {
 			this.theme = theme
 		},
 	},
+	persist: true,
 })

@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import SvgIcon from '@/layouts/svg-icon/SvgIcon.vue';
 
 defineProps({
   item: {
@@ -11,10 +10,10 @@ defineProps({
 </script>
 
 <template>
-  <el-sub-menu :index="item.name">
+  <el-sub-menu :index="item.path">
     <template #title>
-      <SvgIcon :icon="item.icon"/>
-      <span class="title">{{ item.name }}</span>
+      <SvgIcon :name="item.meta ? item.meta.icon : item.icon" />
+      <span class="title">{{ item.meta ? item.meta.title : item.title }}</span>
     </template>
     <slot></slot>
   </el-sub-menu>
