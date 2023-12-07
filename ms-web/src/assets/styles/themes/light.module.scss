@@ -1,0 +1,13 @@
+// menu colors
+$menuBgColor: #ffffff;
+$textColor: #333333;
+$activeTextColor: #000000;
+$iconColor: #000000;
+// menu colors
+
+:export {
+  menuColor: $menuBgColor;
+  menuTextColor: $textColor;
+  menuActiveTextColor: $activeTextColor;
+  iconColor: $iconColor;
+}

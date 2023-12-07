@@ -3,7 +3,7 @@ import { computed } from 'vue'
 const props = defineProps({
   size: {
     type: String,
-    default: '14px'
+    default: '16px'
   },
   color: {
     type: String,

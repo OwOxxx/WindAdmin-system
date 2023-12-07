@@ -1,19 +1,19 @@
 {
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    },
-    {
-      "path": "./tsconfig.app.json"
-    }
-  ],
-  "compilerOptions": {
-    "baseUrl": ".",
-    "module": "ESNext",
-    "isolatedModules":true,
-    "moduleResolution": "node",
-    "paths": {
-      "@/*": ["src/*"]
-    },
-  }
+	"references": [
+		{
+			"path": "./tsconfig.node.json"
+		},
+		{
+			"path": "./tsconfig.app.json"
+		}
+	],
+	"compilerOptions": {
+		"baseUrl": ".",
+		"module": "ESNext",
+		"isolatedModules": true,
+		"moduleResolution": "node",
+		"paths": {
+			"@/*": ["src/*"]
+		}
+	},
 }

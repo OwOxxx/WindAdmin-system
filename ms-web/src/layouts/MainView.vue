@@ -1,10 +1,10 @@
 <template>
   <router-view v-slot="{ Component, route }">
-    <transition>
+    <Transition>
       <!-- <keep-alive :include="cachedRouteStore.getCachedRouteName"> -->
       <component :is="Component" :key="route.fullPath" />
       <!-- </keep-alive> -->
-    </transition>
+    </Transition>
   </router-view>
 </template>
 

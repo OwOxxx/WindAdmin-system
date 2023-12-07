@@ -5,11 +5,11 @@ const whiteRoutes: string[] = ["/login", "/404", "/403", "/500"]
 
 export function usePermissionGuard() {
 	router.beforeEach(async (to, from) => {
+		console.log(to)
 		if (whiteRoutes.includes(to.path)) {
 			return true
 		}
 		const userStore = useUserStore()
-		const roles = userStore.getRoles
 		const token = userStore.getToken
 		if (!token) {
 			return {
@@ -22,9 +22,9 @@ export function usePermissionGuard() {
 		const userPermissionStore = usePermissionStore()
 		if (userPermissionStore.isEmptyPermissionRoute()) {
 			await userPermissionStore.initPermissionRoutes()
-			userStore.setRoles(["admin"])
 			return { ...to, replace: true }
 		}
+		console.log(router.getRoutes())
 		return true
 	})
 }

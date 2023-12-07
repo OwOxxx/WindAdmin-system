@@ -6,7 +6,7 @@ export const adminRoutes = [
     menuUrl: '/index',
     menuName: 'Dashborad',
     routeName: 'dashborad',
-    icon: 'icon-dashboard',
+    icon: 'dashboard',
     parentPath: '',
     children: [
       {
@@ -62,7 +62,7 @@ export const adminRoutes = [
     menuUrl: '/list',
     menuName: '列表页面',
     iconPrefix: 'iconfont',
-    icon: 'detail',
+    icon: 'list',
     parentPath: '',
     children: [
       {
@@ -92,7 +92,7 @@ export const adminRoutes = [
     menuName: '表单页面',
     badge: 'dot',
     iconPrefix: 'iconfont',
-    icon: 'file-text',
+    icon: 'menu-default',
     parentPath: '',
     children: [
       {
@@ -118,7 +118,7 @@ export const adminRoutes = [
     menuUrl: '/other',
     menuName: '功能/组件',
     iconPrefix: 'iconfont',
-    icon: 'appstore',
+    icon: 'menu-default',
     parentPath: '',
     children: [
       {
@@ -194,7 +194,7 @@ export const adminRoutes = [
     menuUrl: '/result',
     menuName: '结果页面',
     iconPrefix: 'iconfont',
-    icon: 'file-unknown',
+    icon: 'menu-default',
     parentPath: '',
     children: [
       {
@@ -214,7 +214,7 @@ export const adminRoutes = [
     menuName: '编辑器',
     badge: '12',
     iconPrefix: 'iconfont',
-    icon: 'edit',
+    icon: 'menu-default',
     parentPath: '',
     children: [
       {
@@ -233,7 +233,7 @@ export const adminRoutes = [
     menuUrl: '/draggable',
     menuName: '拖拽',
     iconPrefix: 'iconfont',
-    icon: 'interation',
+    icon: 'menu-default',
     parentPath: '',
     children: [
       // {
@@ -253,7 +253,7 @@ export const adminRoutes = [
     menuUrl: '/next',
     menuName: '多级菜单',
     iconPrefix: 'iconfont',
-    icon: 'Partition',
+    icon: 'menu-default',
     parentPath: '',
     children: [
       {
@@ -299,7 +299,7 @@ export const adminRoutes = [
     menuUrl: '/map',
     menuName: '地图',
     iconPrefix: 'iconfont',
-    icon: 'location',
+    icon: 'menu-default',
     children: [
       {
         parentPath: '/map',
@@ -317,7 +317,7 @@ export const adminRoutes = [
     menuUrl: '/project',
     menuName: '项目信息',
     iconPrefix: 'iconfont',
-    icon: 'detail',
+    icon: 'menu-default',
     isSingle: true,
     children: [
       {
@@ -333,7 +333,7 @@ export const editorRoutes = [
     menuUrl: '/list',
     menuName: '列表页面',
     iconPrefix: 'iconfont',
-    icon: 'detail',
+    icon: 'menu-default',
     parentPath: '',
     children: [
       {
@@ -363,7 +363,7 @@ export const editorRoutes = [
     menuName: '表单页面',
     badge: 'dot',
     iconPrefix: 'iconfont',
-    icon: 'file-text',
+    icon: 'menu-default',
     parentPath: '',
     children: [
       {
@@ -389,7 +389,7 @@ export const editorRoutes = [
     menuUrl: '/other',
     menuName: '功能/组件',
     iconPrefix: 'iconfont',
-    icon: 'appstore',
+    icon: 'menu-default',
     parentPath: '',
     children: [
       {
@@ -470,7 +470,7 @@ export const editorRoutes = [
     menuUrl: '/result',
     menuName: '结果页面',
     iconPrefix: 'iconfont',
-    icon: 'file-unknown',
+    icon: 'menu-default',
     parentPath: '',
     children: [
       {
@@ -490,7 +490,7 @@ export const editorRoutes = [
     menuName: '编辑器',
     badge: '12',
     iconPrefix: 'iconfont',
-    icon: 'edit',
+    icon: 'menu-default',
     parentPath: '',
     children: [
       {
@@ -509,7 +509,7 @@ export const editorRoutes = [
     menuUrl: '/next',
     menuName: '多级菜单',
     iconPrefix: 'iconfont',
-    icon: 'Partition',
+    icon: 'menu-default',
     parentPath: '',
     children: [
       {
@@ -555,7 +555,7 @@ export const editorRoutes = [
     menuUrl: '/map',
     menuName: '地图',
     iconPrefix: 'iconfont',
-    icon: 'location',
+    icon: 'menu-default',
     children: [
       {
         parentPath: '/map',
@@ -573,7 +573,7 @@ export const editorRoutes = [
     menuUrl: '/project',
     menuName: '项目信息',
     iconPrefix: 'iconfont',
-    icon: 'detail',
+    icon: 'menu-default',
     isSingle: true,
     children: [
       {
