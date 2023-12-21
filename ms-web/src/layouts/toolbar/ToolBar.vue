@@ -17,25 +17,35 @@ const closeSet = () => {
 		<SvgIcon
 			name="search2"
 			class="fs20"
-			:color="settingStore.theme == 'classic' ? '#000' : themeColors[settingStore.themeColor].iconColor" />
+			:color="
+				settingStore.theme == 'classic' ? '#000' : themeColors[settingStore.themeColor].iconColor
+			" />
 		<SvgIcon
 			name="notification1"
 			class="fs20"
-			:color="settingStore.theme == 'classic' ? '#000' : themeColors[settingStore.themeColor].iconColor" />
+			:color="
+				settingStore.theme == 'classic' ? '#000' : themeColors[settingStore.themeColor].iconColor
+			" />
 		<SvgIcon
 			name="refresh"
 			class="fs20"
-			:color="settingStore.theme == 'classic' ? '#000' : themeColors[settingStore.themeColor].iconColor" />
+			:color="
+				settingStore.theme == 'classic' ? '#000' : themeColors[settingStore.themeColor].iconColor
+			" />
 		<SvgIcon
 			@click="toggle"
 			name="screenfull"
 			class="fs20"
-			:color="settingStore.theme == 'classic' ? '#000' : themeColors[settingStore.themeColor].iconColor" />
+			:color="
+				settingStore.theme == 'classic' ? '#000' : themeColors[settingStore.themeColor].iconColor
+			" />
 		<SvgIcon
 			@click="openSet = true"
 			name="setting"
 			class="fs20"
-			:color="settingStore.theme == 'classic' ? '#000' : themeColors[settingStore.themeColor].iconColor" />
+			:color="
+				settingStore.theme == 'classic' ? '#000' : themeColors[settingStore.themeColor].iconColor
+			" />
 	</div>
 	<SystemSet @closeSet="closeSet" :isOpen="openSet" />
 </template>
@@ -44,7 +54,7 @@ const closeSet = () => {
 .tools {
 	display: flex;
 	align-items: center;
-	gap: 25px;
+	gap: 15px;
 	width: 100%;
 	height: 100%;
 }
@@ -52,5 +62,9 @@ const closeSet = () => {
 .fs20 {
 	cursor: pointer;
 	font-size: 20px;
+	&:hover {
+		fill: #4fa6ff !important;
+		stroke: #4fa6ff !important;
+	}
 }
 </style>

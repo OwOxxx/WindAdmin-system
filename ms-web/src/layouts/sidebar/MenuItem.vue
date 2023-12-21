@@ -28,9 +28,16 @@ const handleClick = item => {
 </script>
 
 <template>
-	<el-menu-item :index="item.path" class="menu-item-wrapper" @click="handleClick(item)" :class="{ 'is-active': router.currentRoute.value.path === item.path }">
+	<el-menu-item
+		:index="item.path"
+		class="menu-item-wrapper"
+		@click="handleClick(item)"
+		:class="{ 'is-active': router.currentRoute.value.path === item.path }">
 		<el-icon>
-			<SvgIcon :name="item.meta ? item.meta.icon : item.icon" class="svg-icon" :color="themeColor[settingStore.themeColor].menuTextColor" />
+			<SvgIcon
+				:name="item.meta ? item.meta.icon : item.icon"
+				class="svg-icon"
+				:color="themeColor[settingStore.themeColor].menuTextColor" />
 		</el-icon>
 		<template #title>
 			<span class="title">{{ item.meta ? item.meta.title : item.title }}</span>

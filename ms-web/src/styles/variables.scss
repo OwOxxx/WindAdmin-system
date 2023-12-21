@@ -1,12 +1,5 @@
-@forward "element-plus/theme-chalk/src/common/var.scss" with (
-	$colors: (
-		"primary": (
-			"base": rgb(128, 83, 0),
-		),
-	)
-);
-
 $head-height: 60px;
+$tabs-height: 40px;
 $menuWidth: var(--menu-width);
 $minMenuWidth: 65px;
 $transitionTime: 0.3s ease;

@@ -18,6 +18,9 @@ import viteSvgIcons, { createSvgIconsPlugin } from "vite-plugin-svg-icons"
 
 import ElementPlus from "unplugin-element-plus/vite"
 
+// css原子化UnoCSS
+import UnoCSS from 'unocss/vite'
+
 // const pathSrc = path.resolve(__dirname, 'src')
 
 export default defineConfig({
@@ -36,6 +39,8 @@ export default defineConfig({
 			symbolId: "icon-[dir]-[name]",
 			customDomId: "menu-default"
 		}),
+		// UnoCSS
+		UnoCSS(),
 	],
 	server: {
 		open: true,

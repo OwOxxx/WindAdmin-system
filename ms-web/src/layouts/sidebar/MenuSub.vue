@@ -16,7 +16,10 @@ const props = defineProps({
 	<el-sub-menu :index="item.path" :popper-offset="3">
 		<template #title>
 			<el-icon>
-				<SvgIcon :name="item.meta ? item.meta.icon : 'menu-default'" class="svg-icon" :color="themeColor[settingStore.themeColor].menuTextColor" />
+				<SvgIcon
+					:name="item.meta ? item.meta.icon : 'menu-default'"
+					class="svg-icon"
+					:color="themeColor[settingStore.themeColor].menuTextColor" />
 			</el-icon>
 			<span class="title">{{ item.meta ? item.meta.title : item.title }}</span>
 		</template>

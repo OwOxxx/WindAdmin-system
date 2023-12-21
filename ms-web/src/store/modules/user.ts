@@ -33,6 +33,14 @@ export const useUserStore = defineStore("user", {
 		},
 	},
 	actions: {
+		// 登录
+		login(userInfo: UserState) {
+			
+		},
+		// 重置用户信息
+		reset() {
+			console.log(this)
+		},
 		saveUser(userInfo: UserState) {
 			return new Promise<UserState>(resolve => {
 				this.userId = userInfo.userId

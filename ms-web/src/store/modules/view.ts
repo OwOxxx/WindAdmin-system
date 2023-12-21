@@ -5,7 +5,6 @@ import { ViewItem } from "../types"
 export const useVisitedViewStore = defineStore({
 	id: "view",
 	state: () => ({
-		isCollapse: false, // 菜单栏展开收缩
 		visitedViewList: [
 			// 默认打开的页面，并且不可关闭
 			{
@@ -30,10 +29,6 @@ export const useVisitedViewStore = defineStore({
 				1
 			)
 		},
-
-		toggleCollapse() {
-			this.isCollapse = !this.isCollapse
-		}
 	},
 	persist: true,
 })

@@ -1,13 +1,7 @@
 <script setup lang="ts">
-import { useRouter } from "vue-router"
 import themeColors from "@/assets/styles/themes/index"
-const router = useRouter()
-
-import { useVisitedViewStore } from "@/store/modules/view"
 import { useSettingStore } from "@/store/modules/setting"
-const visitedViewStore = useVisitedViewStore()
 const settingStore = useSettingStore()
-console.log(themeColors)
 
 import SideBar from "@/layouts/sidebar/SideBar.vue"
 import ToolBar from "@/layouts/toolbar/ToolBar.vue"
@@ -23,7 +17,7 @@ import Breadcrumb from "@/layouts/breadcrumb/Breadcrumb.vue"
 	<div id="container_sub">
 		<aside
 			class="aside"
-			:class="[visitedViewStore.isCollapse ? 'close-status' : 'open-status']"
+			:class="[settingStore.isCollapse ? 'close-status' : 'open-status']"
 			:style="{ backgroundColor: themeColors[settingStore.themeColor].menuColor }">
 			<div class="aside_head">
 				<Logo />
@@ -48,7 +42,11 @@ import Breadcrumb from "@/layouts/breadcrumb/Breadcrumb.vue"
 			</div>
 			<TabBar />
 			<div class="content">
-				<MainView />
+				<el-scrollbar>
+					<div class="main_content">
+						<MainView />
+					</div>
+				</el-scrollbar>
 			</div>
 		</main>
 	</div>
@@ -77,6 +75,8 @@ aside {
 	overflow: hidden;
 
 	.aside_head {
+		height: $head-height;
+		border-bottom: 0.5px solid #ebeef5;
 	}
 
 	.sidebar_content {
@@ -112,6 +112,14 @@ main {
 	}
 
 	.content {
+		height: calc(100% - $head-height - $tabs-height);
+		background-color: #ebeef5;
+		overflow: hidden;
+		.main_content {
+			height: 100%;
+			overflow: auto;
+			padding: 12px;
+		}
 	}
 }
 </style>

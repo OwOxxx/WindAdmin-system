@@ -50,10 +50,10 @@ export default defineComponent({
 	vertical-align: -0.15em;
 }
 
-.svg-icon:hover {
-	fill: #4fa6ff;
-	stroke: #4fa6ff;
-}
+/* .svg-icon:hover {
+	fill: #4fa6ff !important;
+	stroke: #4fa6ff !important;
+} */
 
 .svg-external-icon {
 	background-color: currentColor;

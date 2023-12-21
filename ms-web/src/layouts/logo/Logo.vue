@@ -4,7 +4,6 @@ import { useSettingStore } from "@/store/modules/setting"
 import themeColors from "@/assets/styles/themes/index"
 const settingStore = useSettingStore()
 
-const visitedViewStore = useVisitedViewStore()
 </script>
 
 <template>
@@ -12,7 +11,7 @@ const visitedViewStore = useVisitedViewStore()
 		<div class="logo-img">
 			<img src="@/assets/images/logo2.png" alt="" />
 		</div>
-		<div class="title" v-if="!visitedViewStore.isCollapse">
+		<div class="title" v-if="!settingStore.isCollapse">
 			<h3 :style="{ color: themeColors[settingStore.themeColor].menuTextColor }">Vue-Admin</h3>
 		</div>
 	</div>

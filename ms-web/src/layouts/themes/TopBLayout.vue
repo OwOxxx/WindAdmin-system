@@ -1,5 +1,7 @@
 <script lang="ts" setup>
+import { watch } from "vue"
 import { useSettingStore } from "@/store/modules/setting"
+
 import themeColors from "@/assets/styles/themes/index"
 const settingStore = useSettingStore()
 
@@ -9,11 +11,24 @@ import SideBar from "@/layouts/sidebar/SideBar.vue"
 import Avatar from "@/layouts/avatar/Avatar.vue"
 import Logo from "@/layouts/logo/Logo.vue"
 import TabBar from "@/layouts/tabbar/TabBar.vue"
+
+watch(
+	() => settingStore.theme,
+	() => {
+		if (settingStore.getTheme == "topb") {
+			console.log("topb")
+			settingStore.setIsCollapse(false)
+		}
+	},
+	{ immediate: true }
+)
 </script>
 
 <template>
 	<div id="container_sub">
-		<div class="main_head" :style="{ backgroundColor: themeColors[settingStore.themeColor].menuColor }">
+		<div
+			class="main_head"
+			:style="{ backgroundColor: themeColors[settingStore.themeColor].menuColor }">
 			<div class="left">
 				<Logo />
 			</div>
@@ -25,9 +40,13 @@ import TabBar from "@/layouts/tabbar/TabBar.vue"
 				<Avatar />
 			</div>
 		</div>
+		<TabBar />
 		<div class="content">
-			<TabBar />
-			<MainView />
+			<el-scrollbar>
+				<div class="main_content">
+					<MainView />
+				</div>
+			</el-scrollbar>
 		</div>
 	</div>
 </template>
@@ -41,7 +60,6 @@ import TabBar from "@/layouts/tabbar/TabBar.vue"
 		width: 100vw;
 		display: flex;
 		height: $head-height;
-		box-sizing: content-box;
 		border-bottom: 0.5px solid #ebeef5;
 
 		.left {
@@ -55,6 +73,17 @@ import TabBar from "@/layouts/tabbar/TabBar.vue"
 		.right {
 			display: flex;
 			margin: 0 20px;
+		}
+	}
+	.content {
+		width: 100%;
+		height: calc(100% - $head-height - $tabs-height);
+		background-color: #ebeef5;
+		overflow: hidden;
+		.main_content {
+			height: 100%;
+			overflow: auto;
+			padding: 12px;
 		}
 	}
 }

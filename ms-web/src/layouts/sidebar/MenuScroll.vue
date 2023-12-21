@@ -6,13 +6,8 @@ import { ref, computed, onMounted } from "vue"
 import { useRouter } from "vue-router"
 
 import { useSettingStore } from "@/store/modules/setting"
-import { usePermissionStore } from "@/store/modules/premission"
-import { findRootPathRoute } from "@/utils/tools"
-import { useVisitedViewStore } from "@/store/modules/view"
 
 const settingStore = useSettingStore()
-const permissionStore = usePermissionStore()
-const visitedViewStore = useVisitedViewStore()
 
 const mode = computed(() => {
 	if (settingStore.theme === "classic") {
@@ -43,7 +38,7 @@ onMounted(() => {})
 	<el-scrollbar>
 		<el-menu
 			:default-active="activeMenu"
-			:collapse="visitedViewStore.isCollapse"
+			:collapse="settingStore.isCollapse"
 			@open="handleOpen"
 			@close="handleClose"
 			:mode="mode"
@@ -85,6 +80,7 @@ onMounted(() => {})
 	height: 100%;
 	border: none;
 	background: transparent;
+	transition: all 0.3s;
 }
 
 :deep(.el-menu--horizontal) {
