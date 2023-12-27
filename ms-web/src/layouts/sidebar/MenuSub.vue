@@ -1,8 +1,14 @@
 <script lang="ts" setup>
+import { computed } from "vue"
 import { useSettingStore } from "@/store/modules/setting"
-import themeColor from "@/assets/styles/themes/index"
+import { useVisitedViewStore } from "@/store/modules/view"
+import defaultThemeColor from "@/assets/themes/index"
+import { useRouter } from "vue-router"
+
+const router = useRouter()
 
 const settingStore = useSettingStore()
+const visitedViewStore = useVisitedViewStore()
 
 const props = defineProps({
 	item: {
@@ -10,18 +16,30 @@ const props = defineProps({
 		required: true,
 	},
 })
+
+const activeMenuBg = computed(() => {
+	return settingStore.getMenuActiveBg
+})
+
+const setThemeColor = computed(() => {
+	return visitedViewStore.breadcrumbList.some(item => item.path === props.item.path)
+		? settingStore.themeColor
+		:	defaultThemeColor[settingStore.themeBg].menuTextColor
+})
 </script>
 
 <template>
-	<el-sub-menu :index="item.path" :popper-offset="3">
+	<el-sub-menu :index="item.path" :popper-offset="3" popper-class="sub-menu-popper">
 		<template #title>
 			<el-icon>
 				<SvgIcon
 					:name="item.meta ? item.meta.icon : 'menu-default'"
 					class="svg-icon"
-					:color="themeColor[settingStore.themeColor].menuTextColor" />
+					:color="setThemeColor" />
 			</el-icon>
-			<span class="title">{{ item.meta ? item.meta.title : item.title }}</span>
+			<span class="title" :style="{ color: setThemeColor }">
+				{{ item.meta ? item.meta.title : item.title }}
+			</span>
 		</template>
 		<slot></slot>
 	</el-sub-menu>
@@ -31,5 +49,24 @@ const props = defineProps({
 .svg-icon {
 	font-size: 18px;
 	vertical-align: middle;
+}
+
+#before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1;
+	margin: 3px 5px;
+	border-radius: 4px;
+	background-color: v-bind(activeMenuBg);
+}
+
+:deep(.el-sub-menu__title) {
+	&:hover::before {
+		@extend #before;
+	}
 }
 </style>

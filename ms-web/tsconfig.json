@@ -12,6 +12,8 @@
 		"module": "ESNext",
 		"isolatedModules": true,
 		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"allowSyntheticDefaultImports": true,
 		"paths": {
 			"@/*": ["src/*"]
 		}

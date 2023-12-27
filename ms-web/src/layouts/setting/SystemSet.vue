@@ -1,8 +1,10 @@
 <script lang="ts" setup>
 import { ref, watchEffect, watch } from "vue"
 import { useSettingStore } from "@/store/modules/setting"
+import themeColorConfig from "@/assets/themes/themeColor.json"
 
 const settingStore = useSettingStore()
+const themeColorList = themeColorConfig.themeColorList
 
 const drawer_switch = ref(false)
 const props = defineProps({
@@ -19,6 +21,8 @@ watch(
 	},
 	{ immediate: true }
 )
+
+console.log(themeColorConfig)
 </script>
 
 <template>
@@ -33,12 +37,12 @@ watch(
 				</el-col>
 				<el-col :span="6">
 					<el-switch
-						v-model="settingStore.themeColor"
+						v-model="settingStore.themeBg"
 						active-value="dark"
 						inactive-value="light"
 						active-action-icon="Moon"
 						inactive-action-icon="Sunny"
-						@change="settingStore.setThemeColor"
+						@change="settingStore.setThemeBg"
 						style="--el-switch-on-color: #6d6d6d; --el-switch-off-color: #6d6d6d"></el-switch>
 				</el-col>
 			</el-row>
@@ -47,7 +51,7 @@ watch(
 					<el-divider content-position="center">布局模式</el-divider>
 				</el-col>
 				<el-col style="display: flex; justify-content: center; height: 80px">
-					<el-radio-group v-model="settingStore.theme" @change="settingStore.setThemeType">
+					<el-radio-group v-model="settingStore.layoutTheme" @change="settingStore.setThemeType">
 						<el-radio label="classic" class="radio" style="height: 100%">
 							<el-row style="height: 40px; width: 50px">
 								<el-col
@@ -81,12 +85,35 @@ watch(
 					</el-radio-group>
 				</el-col>
 			</el-row>
+			<el-row justify="space-between">
+				<el-col>
+					<el-divider content-position="center">系统主题</el-divider>
+				</el-col>
+				<el-col>
+					<ul class="grid grid-cols-8 gap-5">
+						<li
+							v-for="color in themeColorList"
+							:key="color"
+							:style="{ 'background-color': color }"
+							@click="settingStore.setThemeColorValue(color)"
+							:class="settingStore.themeColor === color ? 'b-rd-50% scale-80' : ''"
+							class="w-24 h-24 transition-all duration-300 ease-in-out"></li>
+					</ul>
+				</el-col>
+			</el-row>
 		</template>
 		<template #footer></template>
 	</el-drawer>
 </template>
 
 <style lang="scss" scoped>
+ul,
+li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
 :deep(.radio) {
 	display: flex;
 	flex-flow: column-reverse nowrap;

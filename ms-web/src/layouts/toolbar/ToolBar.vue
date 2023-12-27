@@ -1,15 +1,19 @@
 <script lang="ts" setup>
 import SystemSet from "@/layouts/setting/SystemSet.vue"
 import { useSettingStore } from "@/store/modules/setting"
-import themeColors from "@/assets/styles/themes/index"
+import defaultThemeColor from "@/assets/themes/index"
 import { toggle } from "@/utils/common/fullscreen"
-import { ref } from "vue"
+import { ref, computed } from "vue"
 
 const openSet = ref(false)
 const settingStore = useSettingStore()
 const closeSet = () => {
 	openSet.value = false
 }
+
+const activeMenuBg = computed(() => {
+	return settingStore.themeColor
+})
 </script>
 
 <template>
@@ -18,33 +22,43 @@ const closeSet = () => {
 			name="search2"
 			class="fs20"
 			:color="
-				settingStore.theme == 'classic' ? '#000' : themeColors[settingStore.themeColor].iconColor
+				settingStore.layoutTheme == 'classic'
+					? '#000'
+					: defaultThemeColor[settingStore.themeBg].iconColor
 			" />
 		<SvgIcon
 			name="notification1"
 			class="fs20"
 			:color="
-				settingStore.theme == 'classic' ? '#000' : themeColors[settingStore.themeColor].iconColor
+				settingStore.layoutTheme == 'classic'
+					? '#000'
+					: defaultThemeColor[settingStore.themeBg].iconColor
 			" />
 		<SvgIcon
 			name="refresh"
 			class="fs20"
 			:color="
-				settingStore.theme == 'classic' ? '#000' : themeColors[settingStore.themeColor].iconColor
+				settingStore.layoutTheme == 'classic'
+					? '#000'
+					: defaultThemeColor[settingStore.themeBg].iconColor
 			" />
 		<SvgIcon
 			@click="toggle"
 			name="screenfull"
 			class="fs20"
 			:color="
-				settingStore.theme == 'classic' ? '#000' : themeColors[settingStore.themeColor].iconColor
+				settingStore.layoutTheme == 'classic'
+					? '#000'
+					: defaultThemeColor[settingStore.themeBg].iconColor
 			" />
 		<SvgIcon
 			@click="openSet = true"
 			name="setting"
 			class="fs20"
 			:color="
-				settingStore.theme == 'classic' ? '#000' : themeColors[settingStore.themeColor].iconColor
+				settingStore.layoutTheme == 'classic'
+					? '#000'
+					: defaultThemeColor[settingStore.themeBg].iconColor
 			" />
 	</div>
 	<SystemSet @closeSet="closeSet" :isOpen="openSet" />
@@ -63,8 +77,8 @@ const closeSet = () => {
 	cursor: pointer;
 	font-size: 20px;
 	&:hover {
-		fill: #4fa6ff !important;
-		stroke: #4fa6ff !important;
+		fill: v-bind(activeMenuBg) !important;
+		stroke: v-bind(activeMenuBg) !important;
 	}
 }
 </style>

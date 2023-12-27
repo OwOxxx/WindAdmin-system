@@ -12,6 +12,7 @@ export const useVisitedViewStore = defineStore({
 				name: "/index/home",
 			},
 		],
+		breadcrumbList: [],
 	}),
 	actions: {
 		addVisitedView(viewItem: ViewItem) {

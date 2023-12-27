@@ -3,6 +3,7 @@ $menuBgColor: #ffffff;
 $textColor: #333333;
 $activeTextColor: #000000;
 $iconColor: #000000;
+$menuActiveBg: rgba(0, 0, 0, 0.09);
 // menu colors
 
 :export {
@@ -10,4 +11,5 @@ $iconColor: #000000;
   menuTextColor: $textColor;
   menuActiveTextColor: $activeTextColor;
   iconColor: $iconColor;
+  menuActiveBg: $menuActiveBg;
 }

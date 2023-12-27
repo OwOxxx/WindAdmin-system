@@ -1,11 +1,18 @@
 // uno.config.ts
-import { defineConfig, presetUno, presetAttributify } from "unocss"
+import { defineConfig, presetUno, presetAttributify, transformerDirectives } from "unocss"
 
 import presetRemToPx from "@unocss/preset-rem-to-px"
 
 export default defineConfig({
 	// ...UnoCSS options
-	presets: [presetUno(), presetAttributify(), presetRemToPx({ baseFontSize: 4 })],
+	presets: [
+		presetUno(),
+		presetAttributify(),
+		presetRemToPx({ baseFontSize: 4 }),
+	],
+	transformers: [
+    transformerDirectives(),
+  ],
 	// theme: {
 	// 	colors: {
 	// 		primary: "#316C72FF",

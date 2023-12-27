@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import themeColors from "@/assets/styles/themes/index"
+import defaultThemeColor from "@/assets/themes/index"
 
 import { ref, computed, onMounted } from "vue"
 
@@ -10,9 +10,9 @@ import { useSettingStore } from "@/store/modules/setting"
 const settingStore = useSettingStore()
 
 const mode = computed(() => {
-	if (settingStore.theme === "classic") {
+	if (settingStore.layoutTheme === "classic") {
 		return "vertical"
-	} else if (settingStore.theme === "topb") {
+	} else if (settingStore.layoutTheme === "topb") {
 		return "horizontal"
 	}
 })
@@ -30,7 +30,8 @@ const router = useRouter()
 const activeMenu = computed(() => {
 	return router.currentRoute.value.path
 })
-console.log(themeColors)
+
+console.log(defaultThemeColor)
 onMounted(() => {})
 </script>
 
@@ -45,9 +46,9 @@ onMounted(() => {})
 			:collapse-transition="false"
 			:ellipsis="false"
 			popper-effect="dark"
-			:background-color="themeColors[settingStore.themeColor].menuColor"
-			:text-color="themeColors[settingStore.themeColor].menuTextColor"
-			:active-text-color="themeColors[settingStore.themeColor].menuActiveTextColor"
+			:background-color="defaultThemeColor[settingStore.themeBg].menuColor"
+			:text-color="defaultThemeColor[settingStore.themeBg].menuTextColor"
+			:active-text-color="settingStore.themeColor"
 			router>
 			<slot></slot>
 		</el-menu>
@@ -63,27 +64,22 @@ onMounted(() => {})
 	box-sizing: content-box !important;
 }
 
-:deep(.el-menu),
-.el-menu {
-	.el-sub-menu__title {
-		&:hover {
-			background-color: $activeTextColor;
-		}
-	}
-	.el-menu-item {
-		&:hover {
-			background-color: $activeTextColor;
-		}
-	}
+:deep(.el-menu--horizontal) {
+	height: $head-height - 1px;
+}
 
+.el-menu {
 	width: 100%;
 	height: 100%;
 	border: none;
 	background: transparent;
 	transition: all 0.3s;
-}
 
-:deep(.el-menu--horizontal) {
-	height: $head-height - 1px;
+	.el-sub-menu {
+		background: inherit !important;
+	}
+	.el-menu-item {
+		background: inherit !important;
+	}
 }
 </style>

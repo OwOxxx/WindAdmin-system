@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import themeColors from "@/assets/styles/themes/index"
+import defaultThemeColor from "@/assets/themes/index"
 import { useSettingStore } from "@/store/modules/setting"
 const settingStore = useSettingStore()
 
@@ -18,7 +18,7 @@ import Breadcrumb from "@/layouts/breadcrumb/Breadcrumb.vue"
 		<aside
 			class="aside"
 			:class="[settingStore.isCollapse ? 'close-status' : 'open-status']"
-			:style="{ backgroundColor: themeColors[settingStore.themeColor].menuColor }">
+			:style="{ backgroundColor: defaultThemeColor[settingStore.themeBg].menuColor }">
 			<div class="aside_head">
 				<Logo />
 			</div>
@@ -76,7 +76,6 @@ aside {
 
 	.aside_head {
 		height: $head-height;
-		border-bottom: 0.5px solid #ebeef5;
 	}
 
 	.sidebar_content {

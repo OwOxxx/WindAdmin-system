@@ -17,7 +17,6 @@ import { installRouter } from "@/router/index"
 
 const app = createApp(App)
 installRouter(app)
-console.log('app')
 installPinia(app)
 useGlobal(app)
 useGuard()

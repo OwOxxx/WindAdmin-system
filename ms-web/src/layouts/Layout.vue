@@ -2,16 +2,18 @@
 import ClassicTheme from "@/layouts/themes/ClassicTheme.vue"
 import TopBLayout from "@/layouts/themes/TopBLayout.vue"
 import { useSettingStore } from "@/store/modules/setting"
+import { useGetBreadcrumbList } from "@/utils/public/getData"
 const settingStore = useSettingStore()
+useGetBreadcrumbList()  // 监听路由获取面包屑
 </script>
 
 <template>
 	<div id="container">
 		<Transition name="fade-transform">
-			<template v-if="settingStore.getTheme == 'classic'">
+			<template v-if="settingStore.layoutTheme == 'classic'">
 				<ClassicTheme />
 			</template>
-			<template v-else-if="settingStore.getTheme == 'topb'">
+			<template v-else-if="settingStore.layoutTheme == 'topb'">
 				<TopBLayout />
 			</template>
 		</Transition>

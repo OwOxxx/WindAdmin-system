@@ -1,7 +1,12 @@
 <script lang="ts" setup>
+import { computed } from "vue"
 import { useSettingStore } from "@/store/modules/setting"
 
 const settingStore = useSettingStore()
+
+const activeMenuBg = computed(() => {
+	return settingStore.themeColor
+})
 </script>
 
 <template>
@@ -18,12 +23,12 @@ const settingStore = useSettingStore()
 	padding: 0 10px;
 
 	.svg-icon {
-		font-size: 25px;
+		font-size: 22px;
 		vertical-align: middle;
 		&:hover {
-      cursor: pointer;
-			fill: #4fa6ff !important;
-			stroke: #4fa6ff !important;
+			cursor: pointer;
+			fill: v-bind(activeMenuBg) !important;
+			stroke: v-bind(activeMenuBg) !important;
 		}
 	}
 }

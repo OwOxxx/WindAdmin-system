@@ -2,7 +2,7 @@
 import { watch } from "vue"
 import { useSettingStore } from "@/store/modules/setting"
 
-import themeColors from "@/assets/styles/themes/index"
+import defaultThemeColor from "@/assets/themes/index"
 const settingStore = useSettingStore()
 
 import ToolBar from "@/layouts/toolbar/ToolBar.vue"
@@ -13,9 +13,9 @@ import Logo from "@/layouts/logo/Logo.vue"
 import TabBar from "@/layouts/tabbar/TabBar.vue"
 
 watch(
-	() => settingStore.theme,
+	() => settingStore.layoutTheme,
 	() => {
-		if (settingStore.getTheme == "topb") {
+		if (settingStore.layoutTheme == "topb") {
 			console.log("topb")
 			settingStore.setIsCollapse(false)
 		}
@@ -28,7 +28,7 @@ watch(
 	<div id="container_sub">
 		<div
 			class="main_head"
-			:style="{ backgroundColor: themeColors[settingStore.themeColor].menuColor }">
+			:style="{ backgroundColor: defaultThemeColor[settingStore.themeBg].menuColor }">
 			<div class="left">
 				<Logo />
 			</div>

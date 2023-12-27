@@ -33,7 +33,6 @@ declare module 'vue' {
     ElSwitch: typeof import('element-plus/es')['ElSwitch']
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
-    Expand: typeof import('./src/components/svg-icon/Expand.vue')['default']
     MixedLine: typeof import('./src/components/Echarts/bar/MixedLine.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

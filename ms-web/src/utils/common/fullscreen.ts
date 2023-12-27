@@ -40,11 +40,10 @@ const getFullScreenStatus = () => {
 };
 
 // 全屏切换
-const toggle = (docElm) => {
-  console.log(docElm)
+const toggle = () => {
   if (!getFullScreenStatus()) {
       // 全屏
-      enterFullscreen(docElm);
+      enterFullscreen();
   } else {
       // 取消全屏
       exitFullscreen();

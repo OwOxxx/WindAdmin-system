@@ -1,18 +1,17 @@
 <script lang="ts" setup>
 import { useVisitedViewStore } from "@/store/modules/view"
 import { useSettingStore } from "@/store/modules/setting"
-import themeColors from "@/assets/styles/themes/index"
+import defaultThemeColor from "@/assets/themes/index"
 const settingStore = useSettingStore()
-
 </script>
 
 <template>
 	<div class="Logo">
 		<div class="logo-img">
-			<img src="@/assets/images/logo2.png" alt="" />
+			<SvgIcon :name="'logo'" :color="settingStore.themeColor" class="text-26" />
 		</div>
-		<div class="title" v-if="!settingStore.isCollapse">
-			<h3 :style="{ color: themeColors[settingStore.themeColor].menuTextColor }">Vue-Admin</h3>
+		<div class="title transition duration-300 ease-in-out" v-if="!settingStore.isCollapse">
+			<h2 :style="{ color: settingStore.themeColor }" class="text">Admin 管理系统</h2>
 		</div>
 	</div>
 </template>
@@ -28,15 +27,14 @@ const settingStore = useSettingStore()
 
 	.logo-img {
 		height: 100%;
-
-		img {
-			height: 100%;
-			width: 100%;
-		}
+		line-height: $head-height;
 	}
 
 	.title {
 		padding: 0 10px;
+		.text {
+			@apply text-16px font-bold text-primary transition duration-300 ease-in-out;
+		}
 	}
 }
 </style>

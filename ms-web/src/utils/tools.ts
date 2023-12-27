@@ -85,5 +85,7 @@ export function generateDynamicRoutes(routes) {
 }
 
 export function findRootPathRoute(routes) {
-	return routes && routes.length > 0 && routes[0].children && routes[0].children.length > 0 ? routes[0].children![0].path : "/"
+	return routes && routes.length > 0 && routes[0].children && routes[0].children.length > 0
+		? routes[0].children![0].path
+		: "/"
 }
