@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref } from "vue"
 import { useRouter } from "vue-router"
-import { useUserStore } from "@/store/modules/user"
+import { useUserStore } from "@/store"
 
 const pull_status = ref(true)
 const userStore = useUserStore()

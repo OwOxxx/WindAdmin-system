@@ -51,7 +51,7 @@ import { post } from "@/api/http"
 import { login } from "@/api/url"
 import router from "@/router";
 
-import { useUserStore } from "@/store/modules/user"
+import { useUserStore } from "@/store"
 const userStore = useUserStore()
 
 // 表单校验

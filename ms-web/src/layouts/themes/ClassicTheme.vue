@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import defaultThemeColor from "@/assets/themes/index"
-import { useSettingStore } from "@/store/modules/setting"
+import { useSettingStore } from "@/store"
 const settingStore = useSettingStore()
 
 import SideBar from "@/layouts/sidebar/SideBar.vue"

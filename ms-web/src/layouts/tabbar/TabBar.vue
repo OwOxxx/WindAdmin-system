@@ -1,13 +1,22 @@
 <script lang="ts" setup>
 import { ref, computed, watch } from "vue"
 import { useRouter } from "vue-router"
-import { useVisitedViewStore } from "@/store/modules/view"
-import { Select } from "@element-plus/icons-vue"
+import { useVisitedViewStore, useSettingStore } from "@/store"
 
 const router = useRouter()
+const settingStore = useSettingStore()
 const visitedViewStore = useVisitedViewStore()
 
 const activeTableTabsValue = ref("/index/home")
+
+const activeMenuBg = computed(() => {
+	return settingStore.getMenuActiveBg(0.1)
+})
+
+const activeColor = computed(() => {
+	return settingStore.themeColor
+})
+
 watch(
 	router.currentRoute,
 	newValue => {
@@ -81,9 +90,15 @@ const changeTab = (targetName: string) => {
 					.el-tabs__item {
 						height: 30px;
 						font-size: 12px;
-            border-radius: 2px;
-						background-color: #e8f4ff;
+						border-radius: 5px;
+						background-color: v-bind(activeMenuBg);
 						border: none;
+						&:hover {
+							color: v-bind(activeColor);
+						}
+					}
+					.is-active {
+						color: v-bind(activeColor);
 					}
 				}
 			}

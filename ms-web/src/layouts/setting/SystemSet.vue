@@ -1,32 +1,14 @@
 <script lang="ts" setup>
-import { ref, watchEffect, watch } from "vue"
-import { useSettingStore } from "@/store/modules/setting"
+import { ref, watchEffect, watch, computed } from "vue"
+import { useSettingStore } from "@/store"
 import themeColorConfig from "@/assets/themes/themeColor.json"
 
 const settingStore = useSettingStore()
 const themeColorList = themeColorConfig.themeColorList
-
-const drawer_switch = ref(false)
-const props = defineProps({
-	isOpen: {
-		type: Boolean,
-		default: false,
-	},
-})
-
-watch(
-	props,
-	(newV, oldV) => {
-		drawer_switch.value = newV.isOpen
-	},
-	{ immediate: true }
-)
-
-console.log(themeColorConfig)
 </script>
 
 <template>
-	<el-drawer v-model="drawer_switch" @close="$emit('closeSet')" size="300">
+	<el-drawer v-model="settingStore.drawer_switch" size="300">
 		<template #header>
 			<h4>System Setting</h4>
 		</template>
@@ -43,7 +25,7 @@ console.log(themeColorConfig)
 						active-action-icon="Moon"
 						inactive-action-icon="Sunny"
 						@change="settingStore.setThemeBg"
-						style="--el-switch-on-color: #6d6d6d; --el-switch-off-color: #6d6d6d"></el-switch>
+						style="--el-switch-on-color: #18181c; --el-switch-off-color: #dadada"></el-switch>
 				</el-col>
 			</el-row>
 			<el-row justify="space-between">
@@ -107,12 +89,6 @@ console.log(themeColorConfig)
 </template>
 
 <style lang="scss" scoped>
-ul,
-li {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
 
 :deep(.radio) {
 	display: flex;

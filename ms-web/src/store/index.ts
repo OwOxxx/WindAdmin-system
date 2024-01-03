@@ -6,3 +6,5 @@ export function installPinia(app) {
 	pinia.use(piniaPluginPersistedstate)
 	app.use(pinia)
 }
+
+export * from "./modules"

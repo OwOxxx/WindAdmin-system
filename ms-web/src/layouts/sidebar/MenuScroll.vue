@@ -5,7 +5,7 @@ import { ref, computed, onMounted } from "vue"
 
 import { useRouter } from "vue-router"
 
-import { useSettingStore } from "@/store/modules/setting"
+import { useSettingStore } from "@/store"
 
 const settingStore = useSettingStore()
 
@@ -39,6 +39,7 @@ onMounted(() => {})
 	<el-scrollbar>
 		<el-menu
 			:default-active="activeMenu"
+			:unique-opened="true"
 			:collapse="settingStore.isCollapse"
 			@open="handleOpen"
 			@close="handleClose"

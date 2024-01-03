@@ -3,7 +3,7 @@ import { ref } from "vue"
 
 import MenuScroll from "@/layouts/sidebar/MenuScroll.vue"
 import SideBarItem from "@/layouts/sidebar/SideBarItem.vue"
-import { usePermissionStore } from "@/store/modules/premission"
+import { usePermissionStore } from "@/store"
 
 const permissionStore = usePermissionStore()
 </script>

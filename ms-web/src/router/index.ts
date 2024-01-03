@@ -1,5 +1,13 @@
 import { App } from "vue"
-import { createRouter, createWebHistory, createWebHashHistory, onBeforeRouteLeave, onBeforeRouteUpdate } from "vue-router"
+import {
+	createRouter,
+	createWebHistory,
+	createWebHashHistory,
+	onBeforeRouteLeave,
+	onBeforeRouteUpdate,
+} from "vue-router"
+// router守卫
+import useGuard from "@/router/guard"
 
 const routes = [
 	{
@@ -14,8 +22,10 @@ const router = createRouter({
 	routes,
 })
 
-export function installRouter(app: App) {
+export async function installRouter(app: App) {
 	app.use(router)
+	useGuard()
+	await router.isReady()
 }
 
 export default router

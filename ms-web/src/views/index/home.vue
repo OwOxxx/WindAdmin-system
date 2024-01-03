@@ -1,90 +1,224 @@
 <script lang="ts" setup>
-import { useRouter } from "vue-router"
+import { CustomGauge, RoundGauge, BarWithBackground } from "./components"
+import { ref, onMounted } from "vue"
 
-import { useSettingStore } from "@/store/modules/setting"
-import DoughnutChart from "@/components/Echarts/pie/DoughnutChart.vue"
-import MixedLine from "@/components/Echarts/bar/MixedLine.vue"
+const companyData = [
+	{
+		span: 4,
+		title: "Total Employees",
+		value: 23000,
+		unit: "",
+		increase: "10%",
+		icon: "user",
+	},
+	{
+		span: 4,
+		title: "Total Projects",
+		value: 23000,
+		unit: "",
+		increase: "10%",
+		icon: "project",
+	},
+	{
+		span: 4,
+		title: "Total Clients",
+		value: 23000,
+		unit: "",
+		increase: "10%",
+		icon: "client",
+	},
+	{
+		span: 4,
+		title: "Total Orders",
+		value: 23000,
+		unit: "",
+		increase: "10%",
+		icon: "order",
+	},
+]
 
-const settingStore = useSettingStore()
-const router = useRouter()
+const EmployeesData = [
+	{
+		name: "Rudolph G",
+		avatar: "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png",
+		position: "Product Designer",
+		taskCount: 198,
+		score: 1230,
+	},
+	{
+		name: "Andrew J",
+		avatar: "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png",
+		position: "Product Designer",
+		taskCount: 198,
+		score: 1230,
+	},
+	{
+		name: "Mary P",
+		avatar: "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png",
+		position: "Product Designer",
+		taskCount: 198,
+		score: 1230,
+	},
+	{
+		name: "Robert G",
+		avatar: "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png",
+		position: "Product Designer",
+		taskCount: 198,
+		score: 1230,
+	},
+	{
+		name: "Kate P",
+		avatar: "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png",
+		position: "Product Designer",
+		taskCount: 198,
+		score: 1230,
+	},
+	{
+		name: "Mary P",
+		avatar: "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png",
+		position: "Product Designer",
+		taskCount: 10,
+		score: 1230,
+	},
+]
+
+const OtherData = [
+	{
+		span: 6,
+		name: "Tachnology & Design Team",
+		value: 960,
+		info: "Employees",
+		unit: "",
+		color: "bulue",
+	},
+	{
+		span: 6,
+		name: "Business & Finance Team",
+		value: 500,
+		info: "Employees",
+		unit: "",
+		color: "green",
+	},
+	{
+		span: 6,
+		name: "Customer Support Team",
+		value: 190,
+		info: "Employees",
+		unit: "",
+		color: "red",
+	},
+	{
+		span: 6,
+		name: "Marketing Team",
+		value: 690,
+		info: "Employees",
+		unit: "",
+		color: "green",
+	},
+]
 </script>
 
 <template>
-	<div class="home">
-		<el-row :gutter="10" class="min-w-620 !flex-nowrap">
-			<el-col :xs="12" :sm="12" :lg="8">
-				<el-card class="h100%" shadow="hover">
-					<div class="flex flex-row">
-						<img class="b-rd-50%" src="@/assets/images/img_avatar1.gif" />
-						<span class="flex justify-center flex-col m-l-20">
-							<p class="text-24 font-500">Hello, Admin</p>
-							<p class="mt-10 text-12 opacity-50">当前角色：超级管理员</p>
-						</span>
+	<div class="work-place overflow-hidden">
+		<el-row :gutter="10" class="min-w-620">
+			<el-col :span="item.span" v-for="item in companyData">
+				<el-card shadow="hover" class="h100% !b-rd-10" body-class="h100%">
+					<div class="h80 pt10 pb10">
+						<img src="@/assets/images/img_avatar1.gif" alt="" class="b-rd-10 h-100%" />
 					</div>
-					<div>
-						<p class="mt-20 text-14 opacity-60">一个人几乎可以在任何他怀有无限热忱的事情上成功。</p>
-						<p class="mt-12 text-12 opacity-50 text-right">—— 查尔斯·史考伯</p>
+					<p class="text-16 opacity-60 mt10 mb10">{{ item.title }}</p>
+					<CountTo
+						:prefix="item.unit"
+						:start-value="1"
+						:end-value="item.value"
+						class="text-24 font-bold" />
+					<p class="text-15 opacity-60 mt10">Task</p>
+					<div class="text-15 mt20">
+						<span class="color-#1890ff">+{{ item.increase }}</span>
+						<span class="opacity-60 pl10">This Month</span>
 					</div>
 				</el-card>
 			</el-col>
-			<el-col :xs="12" :sm="12" :lg="16">
-				<el-card class="h100%" shadow="hover">
-					<h3 class="opacity-90">✨ 欢迎使用 Vue Admin</h3>
-					<p class="mt-10 opacity-60">
-						这是一款极简风格的后台管理模板，包含前后端解决方案，前端使用 Vite + Vue3 + Pinia +
-						Unocss + Element-Plus简单易用，赏心悦目，历经十几次重构和细节打磨，诚意满满！！
-					</p>
+			<el-col :span="8">
+				<el-card shadow="hover" body-class="h100%" class="h100% !b-rd-10">
+					<p class="text-20 font-bold">Task Target Actual vs Prediction</p>
+					<CustomGauge />
 				</el-card>
 			</el-col>
 		</el-row>
-		<el-row :gutter="10" class="mt-10 min-w-620">
-			<el-col :span="12">
-				<el-card shadow="hover" class="h100%">
-					<template #header>
-						<div class="card-header h31">
-							<span class="text-18 font-500">💯 特性</span>
-							<span class="bg-#ecf1f2 b-rd-3 p5 text-15">👏 历经十几次重构和细节打磨</span>
+		<el-row :gutter="10" class="min-w-620 mt-10">
+			<el-col :span="item.span" v-for="item in OtherData">
+				<el-card shadow="hover" class="h100% !b-rd-10" body-class="h100% flex flex-col">
+					<p class="text-20 font-bold">{{ item.name }}</p>
+					<CountTo
+						:prefix="item.unit"
+						:start-value="1"
+						:end-value="item.value"
+						class="text-24 font-bold mt10" />
+					<p class="text-15 opacity-60">{{ item.info }}</p>
+					<el-progress class="mt10" :show-text="false" :percentage="item.value / 10" :stroke-width="10" :color="item.color" />
+				</el-card>
+			</el-col>
+		</el-row>
+		<el-row :gutter="10" class="min-w-620 mt-10 min-h-300">
+			<el-col :span="6">
+				<el-card shadow="hover" class="h100% !b-rd-10" body-class="h100% flex flex-col">
+					<p class="text-20 font-bold">Complete Task Target</p>
+					<div class="flex-1 min-h-220 m10">
+						<RoundGauge />
+					</div>
+					<div class="h80 pt10 pb10 flex">
+						<img src="@/assets/images/img_avatar1.gif" alt="" class="b-rd-10 h-100%" />
+						<div class="flex flex-col justify-center ml-10 w-full">
+							<div class="flex justify-between font-bold text-16">
+								<span>Completed Tasks</span>
+								<span>555</span>
+							</div>
+							<p class="opacity-60">Global</p>
 						</div>
-					</template>
-					<div class="flex flex-col gap-10 text-15 opacity-80">
-						<p>🆒 使用 Vue3 主流技术栈: Vite + Vue3 + Pinia</p>
-						<p>🍇 使用 原子CSS 框架: Unocss ，优雅、轻量、易用</p>
-						<p>🤹 使用主流的 iconify + unocss 图标方案，支持自定义图标，支持动态渲染</p>
-						<p>🎨 使用 Naive UI， 极致简洁的代码风格和清爽的页面设计 ，审美在线，主题轻松定制</p>
-						<p>
-							👏 先进且易于理解的文件结构设计，多个模块之间 零耦合 ，单个业务模块删除不影响其他模块
-						</p>
-						<p>🚀 扁平化路由 设计，每一个组件都可以是一个页面，告别多级路由 KeepAlive 难实现问题</p>
-						<p>🍒 基于权限动态生成路由 ，无需额外定义路由， 403和404可区分 ，而不是无权限也跳404</p>
-						<p>🔐 基于Redis集成 无感刷新 ，用户登录态可控，安全与体验缺一不可</p>
-						<p>✨ 基于 Naive UI 封装 message 全局工具方法，支持批量提醒，支持跨页面共享实例</p>
-						<p>
-							⚡️ 基于 Naive UI 封装常用的业务组件，包含 Page 组件、 CRUD 表格组件及 Modal
-							组件，减少大量重复性工作
-						</p>
+					</div>
+				</el-card>
+			</el-col>
+			<el-col :span="6">
+				<el-card shadow="hover" class="h100% !b-rd-10" body-class="h100% flex flex-col">
+					<p class="text-20 font-bold">Task Count</p>
+					<div class="flex-1 min-h-220">
+						<BarWithBackground />
+					</div>
+					<div class="h80 pt10 pb10 flex">
+						<img src="@/assets/images/img_avatar1.gif" alt="" class="b-rd-10 h-100%" />
+						<div class="flex flex-col justify-center ml-10 w-full">
+							<div class="flex justify-between font-bold text-16">
+								<span>Completed Tasks</span>
+								<span>555</span>
+							</div>
+							<p class="opacity-60">Global</p>
+						</div>
+					</div>
+					<div class="h80 pt10 pb10 flex">
+						<img src="@/assets/images/img_avatar1.gif" alt="" class="b-rd-10 h-100%" />
+						<div class="flex flex-col justify-center ml-10 w-full">
+							<div class="flex justify-between font-bold text-16">
+								<span>Completed Tasks</span>
+								<span>555</span>
+							</div>
+							<p class="opacity-60">Global</p>
+						</div>
 					</div>
 				</el-card>
 			</el-col>
 			<el-col :span="12">
-				<el-card shadow="hover" body-class="body-content-chart" class="h100%">
-					<template #header>
-						<div class="card-header h31">
-							<span class="text-18 font-500">🛠️ 技术栈</span>
-						</div>
-					</template>
-					<DoughnutChart />
-				</el-card>
-			</el-col>
-		</el-row>
-		<el-row class="mt-10 h390">
-			<el-col>
-				<el-card shadow="hover" body-class="body-content-chart" class="h100%">
-					<template #header>
-						<div class="card-header h31">
-							<span class="text-18 font-500">🍀 趋势</span>
-						</div>
-					</template>
-					<MixedLine />
+				<el-card shadow="hover" class="h100% !b-rd-10" body-class="h100% flex flex-col">
+					<p class="text-20 font-bold">Top Employees</p>
+					<ul class="flex-1 flex flex-col gap-10 justify-center">
+						<li v-for="item in EmployeesData" class="flex justify-between items-center">
+							<el-avatar :size="50" :src="item.avatar" />
+							<span class="font-600 ml20">{{ item.name }}</span>
+							<span class="font-600 flex-grow text-center">{{ item.position }}</span>
+							<span class="font-600 flex-grow text-center">{{ item.taskCount }} Tasks</span>
+							<span class="color-#1890ff">{{ item.score }} pts</span>
+						</li>
+					</ul>
 				</el-card>
 			</el-col>
 		</el-row>
@@ -93,13 +227,5 @@ const router = useRouter()
 
 <style lang="scss" scoped>
 .home {
-	.card-header {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-	}
-	:deep(.body-content-chart) {
-		height: calc(100% - 68px);
-	}
 }
 </style>

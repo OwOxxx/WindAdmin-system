@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { watch } from "vue"
-import { useSettingStore } from "@/store/modules/setting"
+import { useSettingStore } from "@/store"
 
 import defaultThemeColor from "@/assets/themes/index"
 const settingStore = useSettingStore()

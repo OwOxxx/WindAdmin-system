@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import SystemSet from "@/layouts/setting/SystemSet.vue"
-import { useSettingStore } from "@/store/modules/setting"
+import { useSettingStore } from "@/store"
 import defaultThemeColor from "@/assets/themes/index"
 import { toggle } from "@/utils/common/fullscreen"
 import { ref, computed } from "vue"
@@ -52,7 +52,7 @@ const activeMenuBg = computed(() => {
 					: defaultThemeColor[settingStore.themeBg].iconColor
 			" />
 		<SvgIcon
-			@click="openSet = true"
+			@click="settingStore.setDrawerSwitch(true)"
 			name="setting"
 			class="fs20"
 			:color="
@@ -61,7 +61,7 @@ const activeMenuBg = computed(() => {
 					: defaultThemeColor[settingStore.themeBg].iconColor
 			" />
 	</div>
-	<SystemSet @closeSet="closeSet" :isOpen="openSet" />
+	<SystemSet />
 </template>
 
 <style lang="scss" scoped>

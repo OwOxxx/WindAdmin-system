@@ -11,7 +11,6 @@ echarts.use([TooltipComponent, LegendComponent, PieChart, CanvasRenderer, LabelL
 const chartDom = ref(null)
 
 onMounted(() => {
-	console.log(chartDom)
 	const myChart = echarts.init(chartDom.value)
 
 	window.addEventListener("resize", function () {

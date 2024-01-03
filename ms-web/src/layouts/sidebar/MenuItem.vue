@@ -1,9 +1,8 @@
 <script lang="ts" setup>
 import router from "@/router"
 import { ref, onMounted, computed } from "vue"
-import { useSettingStore } from "@/store/modules/setting"
+import { useSettingStore, useVisitedViewStore } from "@/store"
 import defaultThemeColor from "@/assets/themes/index"
-import { useVisitedViewStore } from "@/store/modules/view"
 
 const settingStore = useSettingStore()
 const props = defineProps({
@@ -14,9 +13,8 @@ const props = defineProps({
 })
 
 const activeMenuBg = computed(() => {
-	return settingStore.getMenuActiveBg
+	return settingStore.getMenuActiveBg()
 })
-
 
 const setThemeColor = computed(() => {
 	return router.currentRoute.value.path === props.item.path
@@ -76,8 +74,8 @@ const handleClick = item => {
 	right: 0;
 	bottom: 0;
 	z-index: 1;
-	margin: 3px 5px;
-	border-radius: 4px;
+	margin: 3px 8px;
+	border-radius: 5px;
 	background-color: v-bind(activeMenuBg);
 }
 .is-active::before {

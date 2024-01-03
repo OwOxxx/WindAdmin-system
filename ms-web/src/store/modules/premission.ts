@@ -1,10 +1,10 @@
 import { defineStore } from "pinia"
 
-import { generateDynamicRoutes, findRootPathRoute,mapTwoLevelRouter } from "@/utils/tools"
+import { generateDynamicRoutes, findRootPathRoute, mapTwoLevelRouter } from "@/utils"
 import router from "@/router"
 import { post } from "@/api/http"
 import { getMenuListByRoleId } from "@/api/url"
-import { useUserStore } from "@/store/modules/user"
+import { useUserStore } from "@/store"
 
 export const usePermissionStore = defineStore("permission", {
 	state: () => ({
@@ -32,7 +32,10 @@ export const usePermissionStore = defineStore("permission", {
 		},
 		async initPermissionRoutes() {
 			const userStore = useUserStore()
-			const tempAccess = await this.getRoutes({ userId: userStore.userId, roleId: userStore.roleId })
+			const tempAccess = await this.getRoutes({
+				userId: userStore.userId,
+				roleId: userStore.roleId,
+			})
 			const accessRoutes = generateDynamicRoutes(tempAccess)
 			const mapRoutes = mapTwoLevelRouter(accessRoutes)
 			mapRoutes.forEach(item => {

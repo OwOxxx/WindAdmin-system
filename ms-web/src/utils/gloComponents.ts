@@ -25,7 +25,7 @@ function registerComponents(app: App) {
 	app.component("SvgIcon", SvgIcon)
 }
 
-export default function useGlobal(app: App) {
+export default function installGlobal(app: App) {
 	registerElmentPlus(app)
 	registerComponents(app)
 }

@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { computed } from "vue"
-import { useSettingStore } from "@/store/modules/setting"
-import { useVisitedViewStore } from "@/store/modules/view"
+import { useSettingStore, useVisitedViewStore } from "@/store"
 import defaultThemeColor from "@/assets/themes/index"
 import { useRouter } from "vue-router"
 
@@ -18,13 +17,14 @@ const props = defineProps({
 })
 
 const activeMenuBg = computed(() => {
-	return settingStore.getMenuActiveBg
+	return settingStore.getMenuActiveBg()
 })
+
 
 const setThemeColor = computed(() => {
 	return visitedViewStore.breadcrumbList.some(item => item.path === props.item.path)
 		? settingStore.themeColor
-		:	defaultThemeColor[settingStore.themeBg].menuTextColor
+		: defaultThemeColor[settingStore.themeBg].menuTextColor
 })
 </script>
 
@@ -59,8 +59,8 @@ const setThemeColor = computed(() => {
 	right: 0;
 	bottom: 0;
 	z-index: 1;
-	margin: 3px 5px;
-	border-radius: 4px;
+	margin: 4px 8px;
+	border-radius: 5px;
 	background-color: v-bind(activeMenuBg);
 }
 

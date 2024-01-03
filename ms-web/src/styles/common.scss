@@ -10,6 +10,13 @@ body,
 	height: 100vh;
 }
 
+ul,
+li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
 :root {
   --el-color-primary: rgb(0, 0, 0);
 }
@@ -36,8 +43,8 @@ body,
 }
 
 #nprogress {
-  .bar {
-    background-color: #48d8e3;
-    height: 3px;
-  }
+	.bar {
+		background-color: #48d8e3;
+		height: 3px;
+	}
 }

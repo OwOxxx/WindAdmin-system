@@ -1,12 +1,11 @@
 <script setup lang="ts">
+import { useEvents } from "@/composables"
 
-
+useEvents()
 </script>
 
 <template>
-  <RouterView />
+	<RouterView />
 </template>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

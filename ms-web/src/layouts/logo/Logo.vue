@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { useVisitedViewStore } from "@/store/modules/view"
-import { useSettingStore } from "@/store/modules/setting"
+import { useVisitedViewStore,useSettingStore } from "@/store"
 import defaultThemeColor from "@/assets/themes/index"
 const settingStore = useSettingStore()
 </script>

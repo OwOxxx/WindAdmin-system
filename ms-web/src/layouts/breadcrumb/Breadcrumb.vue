@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ArrowRight } from '@element-plus/icons-vue'
 
-import { useVisitedViewStore } from '@/store/modules/view';
+import { useVisitedViewStore } from '@/store';
 
 
 const visitedViewStore = useVisitedViewStore();
