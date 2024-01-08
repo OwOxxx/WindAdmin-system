@@ -9,6 +9,7 @@ export const useSettingStore = defineStore("setting", {
 		layoutTheme: "classic", // classic, topb
 		themeBg: "light", // dark, light
 		themeColor: "#1890ff", // 主题颜色
+		transitionAnimation: "zoom-out", // zoom-fade, zoom-out, slide-right, slide-up
 	}),
 	getters: {
 		getMenuActiveBg: state => {

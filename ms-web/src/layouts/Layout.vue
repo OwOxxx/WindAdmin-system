@@ -2,11 +2,9 @@
 import ClassicTheme from "@/layouts/themes/ClassicTheme.vue"
 import TopBLayout from "@/layouts/themes/TopBLayout.vue"
 import { useSettingStore } from "@/store"
-console.log("获取面包屑")
 import { useGetBreadcrumbList } from "@/utils/public/getData"
 const settingStore = useSettingStore()
 useGetBreadcrumbList()  // 监听路由获取面包屑
-console.log("获取面包屑")
 </script>
 
 <template>

@@ -303,12 +303,12 @@ export const adminRoutes = [
     children: [
       {
         parentPath: '/map',
-        menuUrl: '/map/gaode',
+        menuUrl: '/map/gaode-map',
         menuName: '高德地图',
       },
       {
         parentPath: '/map',
-        menuUrl: '/map/baidu',
+        menuUrl: '/map/baidu-map',
         menuName: '百度地图',
       },
     ],

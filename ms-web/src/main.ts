@@ -2,6 +2,7 @@ import { createApp } from "vue"
 
 // uno.css
 import "virtual:uno.css"
+
 import "./styles"
 import App from "./App.vue"
 // 使用mock

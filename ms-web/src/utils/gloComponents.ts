@@ -1,7 +1,5 @@
 // 注册全局属性等
 import { App } from "vue"
-// 全局样式
-import "@/styles/common.scss"
 
 // 引入element-plus
 import ElementPlus from "element-plus"
