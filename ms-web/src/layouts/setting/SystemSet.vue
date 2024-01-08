@@ -143,8 +143,8 @@ const animateModeList = [
 				</el-col>
 			</el-row>
 			<el-row justify="space-between" class="mt-10">
-				<el-col :span="10">
-					<span>主题颜色</span>
+				<el-col :span="12">
+					<span>页面切换动画类型</span>
 				</el-col>
 				<el-col :span="10">
 					<el-select
