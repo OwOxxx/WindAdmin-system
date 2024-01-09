@@ -58,7 +58,6 @@ export const usePermissionStore = defineStore("permission", {
 					hidden: true,
 				},
 			})
-			console.log(router.getRoutes())
 			this.permissionRoutes = [...accessRoutes]
 		},
 		isEmptyPermissionRoute() {

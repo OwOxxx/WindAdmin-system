@@ -1,6 +1,7 @@
 import { LAYOUT } from "@/store/common"
 import { resolve } from "path-browserify"
 import { toHump } from "@/utils"
+import { h } from "vue"
 
 export function loadComponents() {
 	return import.meta.glob("/src/views/**/*.vue")
@@ -81,6 +82,41 @@ export function generateDynamicRoutes(routes) {
 		}
 		return route
 	})
+}
+
+export function transfromMenu(originRoutes) {
+	function getLabel(item) {
+		return item.meta?.title || item.title
+	}
+	if (!originRoutes) {
+		return []
+	}
+	const tempMenus = []
+	originRoutes
+		.filter(it => {
+			if (!it.meta) {
+				return false
+			}
+			return !it.meta.hidden
+		})
+		.forEach(it => {
+			const tempMenu = {
+				path: it.path,
+				title: getLabel(it),
+				icon: it.meta ? it.meta.icon : it.icon,
+			}
+			if (it.children) {
+				if (it.meta && it.meta.isSingle && it.children.length === 1) {
+					const item = it.children[0]
+					tempMenu.path = resolve(tempMenu.path as string, item.path)
+					tempMenu.title = item.meta && item.meta.title ? getLabel(item) : tempMenu.title
+				} else {
+					tempMenu.children = transfromMenu(it.children)
+				}
+			}
+			tempMenus.push(tempMenu)
+		})
+	return tempMenus
 }
 
 export function findRootPathRoute(routes) {

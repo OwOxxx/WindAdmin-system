@@ -28,6 +28,7 @@ const handleClose = (key: string, keyPath: string[]) => {
 const router = useRouter()
 
 const activeMenu = computed(() => {
+	console.log(router.currentRoute.value.path)
 	return router.currentRoute.value.path
 })
 
@@ -48,9 +49,7 @@ onMounted(() => {})
 			:ellipsis="false"
 			popper-effect="dark"
 			:background-color="defaultThemeColor[settingStore.themeBg].menuColor"
-			:text-color="defaultThemeColor[settingStore.themeBg].menuTextColor"
-			:active-text-color="settingStore.themeColor"
-			router>
+			:text-color="defaultThemeColor[settingStore.themeBg].menuTextColor">
 			<slot></slot>
 		</el-menu>
 	</el-scrollbar>

@@ -33,12 +33,12 @@ const setThemeColor = computed(() => {
 		<template #title>
 			<el-icon>
 				<SvgIcon
-					:name="item.meta ? item.meta.icon : 'menu-default'"
+					:name="item.icon"
 					class="svg-icon"
 					:color="setThemeColor" />
 			</el-icon>
 			<span class="title" :style="{ color: setThemeColor }">
-				{{ item.meta ? item.meta.title : item.title }}
+				{{ item.title }}
 			</span>
 		</template>
 		<slot></slot>
