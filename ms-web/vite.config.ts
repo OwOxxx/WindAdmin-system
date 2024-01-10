@@ -11,17 +11,10 @@ import { ElementPlusResolver } from "unplugin-vue-components/resolvers"
 // svg图标插件
 import viteSvgIcons, { createSvgIconsPlugin } from "vite-plugin-svg-icons"
 
-// 引入图标
-// import IconsResolver from "unplugin-icons/resolver"
-// import Icons from "unplugin-icons/vite"
-// import Inspect from 'vite-plugin-inspect'
-
 import ElementPlus from "unplugin-element-plus/vite"
 
 // css原子化UnoCSS
 import UnoCSS from 'unocss/vite'
-
-// const pathSrc = path.resolve(__dirname, 'src')
 
 export default defineConfig({
 	plugins: [
@@ -56,13 +49,13 @@ export default defineConfig({
 	css: {
 		preprocessorOptions: {
 			scss: {
-				additionalData: '@use "./src/styles/variables.scss" as *;',
+				additionalData: '@use "./src/styles/variables.scss" as *;', // 引入变量
 			},
 		},
 	},
 	resolve: {
 		alias: {
-			"@": path.resolve(__dirname, "src"),
+			"@": path.resolve(__dirname, "src"),	// 设置 `@` 指向 `src` 目录
 		},
 	},
 })
