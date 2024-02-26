@@ -18,17 +18,16 @@ const mode = computed(() => {
 })
 
 const handleOpen = (key: string, keyPath: string[]) => {
-	console.log(key, keyPath)
+	// console.log(key, keyPath)
 }
 const handleClose = (key: string, keyPath: string[]) => {
-	console.log(key, keyPath)
+	// console.log(key, keyPath)
 }
 
 // const activeMenu = ref('/index/home')
 const router = useRouter()
 
 const activeMenu = computed(() => {
-	console.log(router.currentRoute.value.path)
 	return router.currentRoute.value.path
 })
 

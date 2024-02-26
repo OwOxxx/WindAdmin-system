@@ -14,6 +14,8 @@
 		"@element-plus/icons-vue": "^2.1.0",
 		"@vue/tsconfig": "^0.4.0",
 		"@vueuse/core": "^10.7.1",
+		"@wangeditor/editor": "^5.1.23",
+		"@wangeditor/editor-for-vue": "^5.1.12",
 		"axios": "^1.5.0",
 		"echarts": "^5.4.3",
 		"element-plus": "^2.3.12",
@@ -23,6 +25,7 @@
 		"pinia": "^2.1.6",
 		"pinia-plugin-persistedstate": "^3.2.0",
 		"qs": "^6.11.2",
+		"vditor": "^3.9.8",
 		"vite": "^4.4.9",
 		"vue": "^3.3.4",
 		"vue-router": "^4.2.4"
@@ -38,6 +41,7 @@
 		"unplugin-auto-import": "^0.16.6",
 		"unplugin-element-plus": "^0.8.0",
 		"unplugin-vue-components": "^0.25.2",
+		"vite-plugin-mock": "^3.0.1",
 		"vite-plugin-svg-icons": "^2.0.1"
 	}
 }

@@ -210,6 +210,25 @@ export const adminRoutes = [
     ],
   },
   {
+    menuUrl: '/exception',
+    menuName: '异常页面',
+    iconPrefix: 'iconfont',
+    icon: 'menu-default',
+    parentPath: '',
+    children: [
+      {
+        parentPath: '/result',
+        menuUrl: '/result/success',
+        menuName: '成功页面',
+      },
+      {
+        parentPath: '/result',
+        menuUrl: '/result/fail',
+        menuName: '失败页面',
+      },
+    ],
+  },
+  {
     menuUrl: '/editor',
     menuName: '编辑器',
     badge: '12',

@@ -1,11 +1,15 @@
 <script lang="ts" setup>
-import { ref, computed, watch } from "vue"
+import { ref, computed, watch, onMounted, nextTick } from "vue"
 import { useRouter } from "vue-router"
 import { useVisitedViewStore, useSettingStore } from "@/store"
+import { useTabBarEvent, currentMenu } from "@/utils"
 
 const router = useRouter()
 const settingStore = useSettingStore()
 const visitedViewStore = useVisitedViewStore()
+
+// 鼠标滚轮事件
+useTabBarEvent()
 
 const activeTableTabsValue = ref("/index/home")
 
@@ -38,18 +42,68 @@ const removeTab = (targetName: string) => {
 				}
 			}
 		})
+		router.push(activeName)
 	}
-	router.push(activeName)
 	visitedViewStore.removeVisitedView(targetName)
 }
 
 const changeTab = (targetName: string) => {
 	router.push(targetName)
 }
+
+const closeTab = (type, event) => {
+	if (currentMenu.value === "/index/home" && type === "关闭当前") {
+		event.preventDefault()
+		event.stopPropagation()
+		return
+	}
+	const tabs = visitedViewStore.visitedViewList
+	let newTabs = null
+	switch (type) {
+		case "关闭当前":
+			removeTab(currentMenu.value)
+			break
+
+		case "关闭其他":
+			newTabs = tabs.filter(it => {
+				if (it.name == currentMenu.value || it.name == "/index/home") {
+					return it
+				}
+			})
+			visitedViewStore.visitedViewList = newTabs
+			router.push(currentMenu.value)
+			break
+
+		case "关闭左侧":
+			const leftIndex = tabs.findIndex(it => it.name == currentMenu.value)
+			newTabs = tabs.filter((it, index) => {
+				if (index >= leftIndex || it.name == "/index/home") {
+					return it
+				}
+			})
+			visitedViewStore.visitedViewList = newTabs
+			router.push(currentMenu.value)
+			break
+
+		case "关闭右侧":
+			const rightIndex = tabs.findIndex(it => it.name == currentMenu.value)
+			newTabs = tabs.filter((it, index) => {
+				if (index <= rightIndex || it.name == "/index/home") {
+					return it
+				}
+			})
+			visitedViewStore.visitedViewList = newTabs
+			router.push(currentMenu.value)
+			break
+
+		default:
+			break
+	}
+}
 </script>
 
 <template>
-	<div class="tab-bar">
+	<div class="tab-bar" ref="tabBarRef">
 		<el-tabs
 			v-model="activeTableTabsValue"
 			type="card"
@@ -63,6 +117,25 @@ const changeTab = (targetName: string) => {
 				:name="item.name"
 				:closable="item.title !== '主控台'"></el-tab-pane>
 		</el-tabs>
+		<div id="context-menu" class="hidden p8 b-rd-5 b-5 absolute z-10 bg-#fff cursor-pointer">
+			<ul class="flex flex-col gap-5">
+				<li
+					class="hover:bg-#f5f5f5 pl10 pr10 pt5 pb5"
+					:class="{ activeStyle: currentMenu === '/index/home' }"
+					@click="closeTab('关闭当前', $event)">
+					关闭当前
+				</li>
+				<li class="hover:bg-#f5f5f5 pl10 pr10 pt5 pb5" @click="closeTab('关闭其他', $event)">
+					关闭其他
+				</li>
+				<li class="hover:bg-#f5f5f5 pl10 pr10 pt5 pb5" @click="closeTab('关闭左侧', $event)">
+					关闭左侧
+				</li>
+				<li class="hover:bg-#f5f5f5 pl10 pr10 pt5 pb5" @click="closeTab('关闭右侧', $event)">
+					关闭右侧
+				</li>
+			</ul>
+		</div>
 	</div>
 </template>
 
@@ -103,6 +176,18 @@ const changeTab = (targetName: string) => {
 				}
 			}
 		}
+	}
+}
+
+#context-menu {
+	box-shadow: 1px 1px 2px 0px black;
+}
+
+.activeStyle {
+	cursor: not-allowed;
+	color: #b5b1b1 !important;
+	&:hover {
+		background-color: transparent !important;
 	}
 }
 </style>

@@ -82,7 +82,6 @@ watch(
 		overflow: hidden;
 		.main_content {
 			height: 100%;
-			overflow: auto;
 			padding: 12px;
 		}
 	}
