@@ -7,6 +7,7 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AppLoading: typeof import('./src/components/common/app-loading.vue')['default']
     CountTo: typeof import('./src/components/custom/count-to.vue')['default']
     CustomGauge: typeof import('./src/components/Echarts/gauge/CustomGauge.vue')['default']
     DoughnutChart: typeof import('./src/components/Echarts/pie/DoughnutChart.vue')['default']
