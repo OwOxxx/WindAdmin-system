@@ -1,0 +1,5 @@
+node_modules
+
+// 忽略文件
+pnpm-lock.yaml
+```
