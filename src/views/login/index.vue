@@ -11,7 +11,7 @@
 							<el-input placeholder="Name" v-model="loginForm.username"></el-input>
 						</el-form-item>
 						<el-form-item prop="password">
-							<el-input placeholder="Password" v-model="loginForm.password"></el-input>
+							<el-input placeholder="Password" type="password" v-model="loginForm.password"></el-input>
 						</el-form-item>
 						<el-button type="primary" text style="font-size: 16px;" @click="submitFormLogin(loginFormRef)">登 录</el-button>
 					</el-form>
@@ -68,8 +68,8 @@ const rulesRegister = reactive({
 
 // 登录
 const loginForm = ref({
-	username: "",
-	password: ""
+	username: "admin",
+	password: "123"
 })
 const submitFormLogin = async (formEl) => {
 	if (!formEl) return
