@@ -1,4 +1,5 @@
 node_modules
+dist
 
 // 忽略文件
 pnpm-lock.yaml

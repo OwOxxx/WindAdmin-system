@@ -22,13 +22,7 @@ onMounted(() => {
 </script>
 
 <template>
-	<div id="container">
+	<div class="main-container">
 		<div ref="baiduRef" id="baidu" class="w-full h-full"></div>
 	</div>
 </template>
-
-<style lang="scss" scoped>
-#container {
-	height: calc(100vh - $head-height - $tabHeight - 24px);
-}
-</style>
