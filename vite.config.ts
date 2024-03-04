@@ -1,6 +1,6 @@
 import vue from "@vitejs/plugin-vue"
 import { defineConfig, UserConfigExport, ConfigEnv } from "vite"
-import { viteMockServe } from 'vite-plugin-mock'
+import { viteMockServe } from "vite-plugin-mock"
 import path from "path"
 
 // 按需引入组件
@@ -18,6 +18,7 @@ import UnoCSS from "unocss/vite"
 
 export default ({ command }: ConfigEnv): UserConfigExport => {
 	return {
+		base: "/",
 		plugins: [
 			vue(),
 			AutoImport({
@@ -36,9 +37,9 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
 			// UnoCSS
 			UnoCSS(),
 			// viteMockServe({
-      //   mockPath: 'mock',
-      //   enable: true,
-      // }),
+			//   mockPath: 'mock',
+			//   enable: true,
+			// }),
 		],
 		server: {
 			open: true,
@@ -59,9 +60,12 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
 			},
 		},
 		resolve: {
-			alias: {
-				"@": path.resolve(__dirname, "src"), // 设置 `@` 指向 `src` 目录
-			},
+			alias: [
+				{
+					find: "@/",
+					replacement: path.resolve(process.cwd(), "src") + "/",
+				},
+			],
 		},
 	}
 }

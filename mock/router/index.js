@@ -217,15 +217,20 @@ export const adminRoutes = [
     parentPath: '',
     children: [
       {
-        parentPath: '/result',
-        menuUrl: '/result/success',
-        menuName: '成功页面',
+        parentPath: '/exception',
+        menuUrl: '/exception/403',
+        menuName: '403页面',
       },
       {
-        parentPath: '/result',
-        menuUrl: '/result/fail',
-        menuName: '失败页面',
+        parentPath: '/exception',
+        menuUrl: '/exception/404',
+        menuName: '404页面',
       },
+      {
+        parentPath: '/exception',
+        menuUrl: '/exception/500',
+        menuName: '500页面',
+      }
     ],
   },
   {
