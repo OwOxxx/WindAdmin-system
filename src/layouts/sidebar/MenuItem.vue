@@ -14,7 +14,11 @@ const props = defineProps({
 })
 
 const activeMenuBg = computed(() => {
-	return settingStore.getMenuActiveBg()
+	let alpha = 0.09
+	if (settingStore.themeBg === "dark") {
+		alpha = 0.3
+	}
+	return settingStore.getMenuActiveBg(alpha)
 })
 
 const setThemeColor = computed(() => {

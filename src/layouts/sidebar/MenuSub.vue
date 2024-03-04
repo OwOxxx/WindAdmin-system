@@ -20,7 +20,6 @@ const activeMenuBg = computed(() => {
 	return settingStore.getMenuActiveBg()
 })
 
-
 const setThemeColor = computed(() => {
 	return visitedViewStore.breadcrumbList.some(item => item.path === props.item.path)
 		? settingStore.themeColor
@@ -32,10 +31,7 @@ const setThemeColor = computed(() => {
 	<el-sub-menu :index="item.path" :popper-offset="3" popper-class="sub-menu-popper">
 		<template #title>
 			<el-icon>
-				<SvgIcon
-					:name="item.icon"
-					class="svg-icon"
-					:color="setThemeColor" />
+				<SvgIcon :name="item.icon" class="svg-icon" :color="setThemeColor" />
 			</el-icon>
 			<span class="title" :style="{ color: setThemeColor }">
 				{{ item.title }}
@@ -61,10 +57,11 @@ const setThemeColor = computed(() => {
 	z-index: 1;
 	margin: 4px 8px;
 	border-radius: 5px;
-	background-color: v-bind(activeMenuBg);
+	background-color: v-bind(activeMenuBg) !important;
 }
 
 :deep(.el-sub-menu__title) {
+	background-color: transparent !important;
 	&:hover::before {
 		@extend #before;
 	}
