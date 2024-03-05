@@ -13,13 +13,17 @@ import { installPinia } from "@/store"
 import installGlobal from "@/utils/gloComponents"
 // vue-router
 import { installRouter } from "@/router/index"
+import AppLoading from "./components/common/app-loading.vue"
 
 async function setupApp() {
+	const appLoading = createApp(AppLoading)
+	appLoading.mount("#app-loading")
 	const app = createApp(App)
 	installPinia(app)
 	await installRouter(app)
 	installGlobal(app)
 	useMock()
+	appLoading.unmount()
 	app.mount("#app")
 }
 
