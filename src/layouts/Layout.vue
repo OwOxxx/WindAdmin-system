@@ -4,11 +4,11 @@ import TopBLayout from "@/layouts/themes/TopBLayout.vue"
 import { useSettingStore } from "@/store"
 import { useGetBreadcrumbList } from "@/utils/public/getData"
 const settingStore = useSettingStore()
-useGetBreadcrumbList()  // 监听路由获取面包屑
+useGetBreadcrumbList() // 监听路由获取面包屑
 </script>
 
 <template>
-	<div id="container">
+	<div class="container_layout">
 		<Transition name="fade-transform">
 			<template v-if="settingStore.layoutTheme == 'classic'">
 				<ClassicTheme />
@@ -21,7 +21,7 @@ useGetBreadcrumbList()  // 监听路由获取面包屑
 </template>
 
 <style lang="scss" scoped>
-#container {
+.container_layout {
 	display: flex;
 	width: 100%;
 	height: 100%;

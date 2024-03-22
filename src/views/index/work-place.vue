@@ -42,21 +42,15 @@ import { DoughnutChart, MixedLine } from "./components"
 						</div>
 					</template>
 					<div class="flex flex-col gap-10 text-15 opacity-80">
-						<p>🆒 使用 Vue3 主流技术栈: Vite + Vue3 + Pinia</p>
+						<p>🆒 使用 Vue3 主流技术栈: Vite + Vue3 + Pinia + Vue-router</p>
 						<p>🍇 使用 原子CSS 框架: Unocss ，优雅、轻量、易用</p>
-						<p>🤹 使用主流的 iconify + unocss 图标方案，支持自定义图标，支持动态渲染</p>
-						<p>🎨 使用 Naive UI， 极致简洁的代码风格和清爽的页面设计 ，审美在线，主题轻松定制</p>
+						<!-- <p>🤹 使用主流的 iconify + unocss 图标方案，支持自定义图标，支持动态渲染</p> -->
+						<p>🎨 使用 Element-plus， 极致简洁的代码风格和清爽的页面设计 ，审美在线，主题轻松定制</p>
 						<p>
 							👏 先进且易于理解的文件结构设计，多个模块之间 零耦合 ，单个业务模块删除不影响其他模块
 						</p>
 						<p>🚀 扁平化路由 设计，每一个组件都可以是一个页面，告别多级路由 KeepAlive 难实现问题</p>
 						<p>🍒 基于权限动态生成路由 ，无需额外定义路由， 403和404可区分 ，而不是无权限也跳404</p>
-						<p>🔐 基于Redis集成 无感刷新 ，用户登录态可控，安全与体验缺一不可</p>
-						<p>✨ 基于 Naive UI 封装 message 全局工具方法，支持批量提醒，支持跨页面共享实例</p>
-						<p>
-							⚡️ 基于 Naive UI 封装常用的业务组件，包含 Page 组件、 CRUD 表格组件及 Modal
-							组件，减少大量重复性工作
-						</p>
 					</div>
 				</el-card>
 			</el-col>

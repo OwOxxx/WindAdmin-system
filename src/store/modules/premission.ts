@@ -53,7 +53,7 @@ export const usePermissionStore = defineStore("permission", {
 			// 这个路由一定要放在最后
 			router.addRoute({
 				path: "/:pathMatch(.*)*",
-				redirect: "/404",
+				redirect: "/exception/404",
 				meta: {
 					hidden: true,
 				},

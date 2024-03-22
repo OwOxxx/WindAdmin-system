@@ -73,10 +73,10 @@ onMounted(() => {
 				title: {
 					show: true,
 					offsetCenter: [0, "0%"], // x, y，单位px
-					textStyle: {
+					axisName: {
 						color: "#bbbbbb",
 						fontSize: 16,
-					},
+					}
 				},
 				//仪表盘详情，用于显示数据。
 				detail: {
