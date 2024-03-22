@@ -1,9 +1,8 @@
-import { createApp } from "vue"
-
-// uno.css
-import "virtual:uno.css"
-
 import "./styles"
+import "virtual:uno.css" // uno.css
+import "default-passive-events"
+
+import { createApp } from "vue"
 import App from "./App.vue"
 // 使用mock
 import useMock from "../mock/index"

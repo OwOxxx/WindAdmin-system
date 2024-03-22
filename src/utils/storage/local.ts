@@ -1,8 +1,4 @@
 import { decrypt, encrypt } from "../crypto"
-interface StorageData<T> {
-	value: T
-	expire: number | null
-}
 
 function createLocalStorage() {
 	/** 默认缓存期限为7天 */

@@ -19,13 +19,13 @@ onMounted(() => {
 </script>
 
 <template>
-	<div id="container">
+	<div class="container_md">
 		<div id="vditor" style="width: 100%;height: 100% !important;"/>
 	</div>
 </template>
 
 <style lang="scss" scoped>
-#container {
+.container_md {
   padding: 30px 0;
 	height: calc(100vh - $head-height - $tabHeight - 24px);
 }

@@ -15,7 +15,6 @@ import ElementPlus from "unplugin-element-plus/vite"
 
 // css原子化UnoCSS
 import UnoCSS from "unocss/vite"
-
 export default ({ command }: ConfigEnv): UserConfigExport => {
 	return {
 		base: "/",

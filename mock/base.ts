@@ -1,5 +1,5 @@
 export const baseData = {
   code: 200,
-  data: '',
+  data: {},
   msg: '获取数据成功',
 }

@@ -16,7 +16,6 @@ onMounted(() => {
 	})
 
 	const option = {
-
 		//下面属性才是仪表盘的核心！！反正我是这么认为的！！！
 		series: [
 			{
@@ -74,7 +73,7 @@ onMounted(() => {
 				title: {
 					show: true,
 					offsetCenter: [0, "19%"], // x, y，单位px
-					textStyle: {
+					axisName: {
 						color: "#bbbbbb",
 						fontSize: 16,
 					},
@@ -105,7 +104,7 @@ onMounted(() => {
 				data: [
 					{
 						value: 65,
-						name:'Tasks',
+						name: "Tasks",
 					},
 				],
 			},

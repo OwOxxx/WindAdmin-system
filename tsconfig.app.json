@@ -5,9 +5,6 @@
 		"composite": true,
 		"module": "ESNext",
 		"moduleResolution": "Bundler",
-		"baseUrl": ".",
-		"paths": {
-			"@/*": ["./src/*"]
-		}
+		"baseUrl": "."
 	}
 }

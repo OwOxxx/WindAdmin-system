@@ -1,5 +1,8 @@
 <template>
-	<div><renderFunction :test="obj" /></div>
+	<div>
+		<renderFunction :test="obj" />
+			<div v-for="(it, index) in 9" v-if="false">{{ it }}</div>
+	</div>
 </template>
 
 <script setup lang="ts">
