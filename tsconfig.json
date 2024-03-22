@@ -18,5 +18,5 @@
 			"@/*": ["src/*"]
 		}
 	},
-	"exclude": ["node_modules", "dist", "./back-end-server/*"]
+	"exclude": ["node_modules", "dist"]
 }
