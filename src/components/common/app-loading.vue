@@ -48,7 +48,13 @@ import { hexToRgba } from "@/utils"
 
 const SYSTEM_NAME = "WindAdmin"
 const setting = JSON.parse(localStorage.getItem("setting") || "{}")
-const themeColor = setting.themeColor || "#1890ff"
+const themeColor = setting.themeColor || "#5ac8fa"
+const setThemeByCache = () => {
+	document.documentElement.style.setProperty("--theme-color", themeColor)
+	document.documentElement.style.setProperty("--menu-color-hover", hexToRgba(themeColor, 0.3))
+	document.documentElement.style.setProperty("--tabbar-color-hover", hexToRgba(themeColor, 0.2))
+}
+setThemeByCache()
 </script>
 
 <style lang="scss" scoped>
@@ -65,7 +71,7 @@ const themeColor = setting.themeColor || "#1890ff"
 	stop-color: v-bind(hexToRgba(themeColor, 0.5));
 }
 .system_name {
-  color: v-bind(hexToRgba(themeColor, 0.8));
+	color: v-bind(hexToRgba(themeColor, 0.8));
 }
 .halvan {
 	animation: Snurra1 10s infinite linear;

@@ -54,7 +54,7 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
 		css: {
 			preprocessorOptions: {
 				scss: {
-					additionalData: '@use "./src/styles/variables.scss" as *;', // 引入变量
+					additionalData: '@use "@/styles/variables.scss" as *;', // 引入变量
 				},
 			},
 		},

@@ -27,8 +27,8 @@ const activeMenuBg = computed(() => {
 		vertical-align: middle;
 		&:hover {
 			cursor: pointer;
-			fill: v-bind(activeMenuBg) !important;
-			stroke: v-bind(activeMenuBg) !important;
+			fill: var(--theme-color) !important;
+			stroke: var(--theme-color) !important;
 		}
 	}
 }

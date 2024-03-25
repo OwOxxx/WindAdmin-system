@@ -1,5 +1,5 @@
 <template>
-	<div class="container">
+	<div class="login-container">
 		<div class="content">
 			<div class="left-side a-container" ref="left_Dom">
 				<div class="form_login">
@@ -200,7 +200,7 @@ $transition: 1.25s;
 	}
 }
 
-.container {
+.login-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;

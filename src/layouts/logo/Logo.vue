@@ -1,16 +1,15 @@
 <script lang="ts" setup>
-import { useVisitedViewStore,useSettingStore } from "@/store"
-import defaultThemeColor from "@/assets/themes/index"
+import { useSettingStore } from "@/store"
 const settingStore = useSettingStore()
 </script>
 
 <template>
 	<div class="Logo">
 		<div class="logo-img">
-			<SvgIcon :name="'logo'" :color="settingStore.themeColor" class="text-26" />
+			<SvgIcon :name="'logo'" :color="'var(--theme-color)'" class="text-26" />
 		</div>
 		<div class="title transition duration-300 ease-in-out" v-if="!settingStore.isCollapse">
-			<h2 :style="{ color: settingStore.themeColor }" class="text">Admin 管理系统</h2>
+			<h2 class="text">Admin 管理系统</h2>
 		</div>
 	</div>
 </template>
@@ -32,7 +31,8 @@ const settingStore = useSettingStore()
 	.title {
 		padding: 0 10px;
 		.text {
-			@apply text-16px font-bold text-primary transition duration-300 ease-in-out;
+			color: var(--theme-color);
+			@apply text-16px font-bold transition duration-300 ease-in-out;
 		}
 	}
 }

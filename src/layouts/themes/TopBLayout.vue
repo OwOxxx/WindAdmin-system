@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import { watch } from "vue"
 import { useSettingStore } from "@/store"
-
-import defaultThemeColor from "@/assets/themes/index"
 const settingStore = useSettingStore()
 
 import ToolBar from "@/layouts/toolbar/ToolBar.vue"
@@ -26,9 +24,7 @@ watch(
 
 <template>
 	<div id="container_sub">
-		<div
-			class="main_head"
-			:style="{ backgroundColor: defaultThemeColor[settingStore.themeBg].menuColor }">
+		<div class="main_head">
 			<div class="left">
 				<Logo />
 			</div>
@@ -61,6 +57,7 @@ watch(
 		display: flex;
 		height: $head-height;
 		border-bottom: 0.5px solid #ebeef5;
+		background-color: var(--bg-color);
 
 		.left {
 		}

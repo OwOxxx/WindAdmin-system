@@ -2,7 +2,6 @@
 import router from "@/router"
 import { ref, onMounted, computed } from "vue"
 import { useSettingStore, useVisitedViewStore } from "@/store"
-import defaultThemeColor from "@/assets/themes/index"
 import { isExternal } from "@/utils"
 
 const settingStore = useSettingStore()
@@ -23,8 +22,8 @@ const activeMenuBg = computed(() => {
 
 const setThemeColor = computed(() => {
 	return router.currentRoute.value.path === props.item.path
-		? settingStore.themeColor
-		: defaultThemeColor[settingStore.themeBg].menuTextColor
+		? 'var(--theme-color)'
+		: 'var(--text-color)'
 })
 
 const visitedViewStore = useVisitedViewStore()
@@ -78,7 +77,7 @@ const handleClick = item => {
 	z-index: 1;
 	margin: 3px 8px;
 	border-radius: 5px;
-	background-color: v-bind(activeMenuBg);
+	background-color: var(--menu-color-hover);
 }
 .is-active::before {
 	@extend #before;

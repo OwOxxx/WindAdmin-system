@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import defaultThemeColor from "@/assets/themes/index"
-
 import { ref, computed, onMounted } from "vue"
 
 import { useRouter } from "vue-router"
@@ -31,7 +29,6 @@ const activeMenu = computed(() => {
 	return router.currentRoute.value.path
 })
 
-console.log(defaultThemeColor)
 onMounted(() => {})
 </script>
 
@@ -46,9 +43,7 @@ onMounted(() => {})
 			:mode="mode"
 			:collapse-transition="false"
 			:ellipsis="false"
-			popper-effect="dark"
-			:background-color="defaultThemeColor[settingStore.themeBg].menuColor"
-			:text-color="defaultThemeColor[settingStore.themeBg].menuTextColor">
+			popper-effect="dark">
 			<slot></slot>
 		</el-menu>
 	</el-scrollbar>
@@ -71,9 +66,7 @@ onMounted(() => {})
 	width: 100%;
 	height: 100%;
 	border: none;
-	background: transparent;
 	transition: all 0.3s;
-
 	.el-sub-menu {
 		background: inherit !important;
 	}

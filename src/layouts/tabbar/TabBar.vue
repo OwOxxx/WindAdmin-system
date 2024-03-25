@@ -13,14 +13,6 @@ useTabBarEvent()
 
 const activeTableTabsValue = ref("/index/home")
 
-const activeMenuBg = computed(() => {
-	return settingStore.getMenuActiveBg(0.1)
-})
-
-const activeColor = computed(() => {
-	return settingStore.themeColor
-})
-
 watch(
 	router.currentRoute,
 	newValue => {
@@ -164,14 +156,14 @@ const closeTab = (type, event) => {
 						height: 30px;
 						font-size: 12px;
 						border-radius: 5px;
-						background-color: v-bind(activeMenuBg);
+						background-color: var(--tabbar-color-hover);
 						border: none;
 						&:hover {
-							color: v-bind(activeColor);
+							color: var(--theme-color);
 						}
 					}
 					.is-active {
-						color: v-bind(activeColor);
+						color: var(--theme-color);
 					}
 				}
 			}
