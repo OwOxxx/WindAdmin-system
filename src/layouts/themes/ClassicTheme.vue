@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import defaultThemeColor from "@/assets/themes/index"
 import { useSettingStore } from "@/store"
 const settingStore = useSettingStore()
 
@@ -11,14 +10,14 @@ import TabBar from "@/layouts/tabbar/TabBar.vue"
 import Collapse from "@/layouts/toolbar/Collapse.vue"
 import Logo from "@/layouts/logo/Logo.vue"
 import Breadcrumb from "@/layouts/breadcrumb/Breadcrumb.vue"
+
 </script>
 
 <template>
 	<div id="container_sub">
 		<aside
 			class="aside"
-			:class="[settingStore.isCollapse ? 'close-status' : 'open-status']"
-			:style="{ backgroundColor: defaultThemeColor[settingStore.themeBg].menuColor }">
+			:class="[settingStore.isCollapse ? 'close-status' : 'open-status']">
 			<div class="aside_head">
 				<Logo />
 			</div>
@@ -71,7 +70,8 @@ import Breadcrumb from "@/layouts/breadcrumb/Breadcrumb.vue"
 
 aside {
 	height: 100%;
-	border-right: 0.5px solid #ebeef5;
+	background-color: var(--bg-color);
+	border-right: 0.5px solid var(--border-color-lightest);
 	overflow: hidden;
 
 	.aside_head {
@@ -92,6 +92,7 @@ main {
 		display: flex;
 		height: $head-height;
 		border-bottom: 0.5px solid #ebeef5;
+		background-color: var(--bg-color);
 
 		.left {
 			min-width: 210px;

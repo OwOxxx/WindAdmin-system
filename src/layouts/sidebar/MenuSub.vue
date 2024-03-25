@@ -1,12 +1,6 @@
 <script lang="ts" setup>
 import { computed } from "vue"
-import { useSettingStore, useVisitedViewStore } from "@/store"
-import defaultThemeColor from "@/assets/themes/index"
-import { useRouter } from "vue-router"
-
-const router = useRouter()
-
-const settingStore = useSettingStore()
+import { useVisitedViewStore } from "@/store"
 const visitedViewStore = useVisitedViewStore()
 
 const props = defineProps({
@@ -16,15 +10,10 @@ const props = defineProps({
 	},
 })
 
-const activeMenuBg = computed(() => {
-	return settingStore.getMenuActiveBg()
-})
-
-
 const setThemeColor = computed(() => {
 	return visitedViewStore.breadcrumbList.some(item => item.path === props.item.path)
-		? settingStore.themeColor
-		: defaultThemeColor[settingStore.themeBg].menuTextColor
+		? "var(--theme-color)"
+		: "var(--text-color)"
 })
 </script>
 
@@ -32,10 +21,7 @@ const setThemeColor = computed(() => {
 	<el-sub-menu :index="item.path" :popper-offset="3" popper-class="sub-menu-popper">
 		<template #title>
 			<el-icon>
-				<SvgIcon
-					:name="item.icon"
-					class="svg-icon"
-					:color="setThemeColor" />
+				<SvgIcon :name="item.icon" class="svg-icon" :color="setThemeColor" />
 			</el-icon>
 			<span class="title" :style="{ color: setThemeColor }">
 				{{ item.title }}
@@ -61,7 +47,7 @@ const setThemeColor = computed(() => {
 	z-index: 1;
 	margin: 4px 8px;
 	border-radius: 5px;
-	background-color: v-bind(activeMenuBg);
+	background-color: var(--menu-color-hover);
 }
 
 :deep(.el-sub-menu__title) {

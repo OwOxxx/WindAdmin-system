@@ -1,5 +1,4 @@
 import { defineStore } from "pinia"
-import defaultThemeColor from "@/assets/themes/index"
 import { hexToRgba } from "@/utils"
 
 export const useSettingStore = defineStore("setting", {
@@ -7,7 +6,7 @@ export const useSettingStore = defineStore("setting", {
 		drawer_switch: false, // 侧边栏设置开关
 		isCollapse: false, // 菜单栏展开收缩
 		layoutTheme: "classic", // classic, topb
-		themeBg: "light", // dark, light
+		themeBg: "dark", // dark, light
 		themeColor: "#1890ff", // 主题颜色
 		transitionAnimation: "zoom-out", // zoom-fade, zoom-out, slide-right, slide-up
 	}),
@@ -40,11 +39,12 @@ export const useSettingStore = defineStore("setting", {
 		// 设置主题颜色
 		setThemeColorValue(themeColor: string) {
 			this.themeColor = themeColor
+			document.documentElement.style.setProperty("--theme-color", themeColor)
+			document.documentElement.style.setProperty("--menu-color-hover", this.getMenuActiveBg(0.3))
+			document.documentElement.style.setProperty("--tabbar-color-hover", this.getMenuActiveBg(0.2))
 		},
 		// 设置默认主题颜色
-		setDefaultThemeColor() {
-			this.themeColor = defaultThemeColor
-		},
+		setDefaultThemeColor() {},
 	},
 	persist: true,
 })

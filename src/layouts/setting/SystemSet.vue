@@ -3,6 +3,15 @@ import { ref, watchEffect, watch, computed } from "vue"
 import { useSettingStore } from "@/store"
 import themeColorConfig from "@/assets/themes/themeColor.json"
 import OtherColor from "@/assets/themes/color.json"
+import { useDark, useToggle } from "@vueuse/core"
+
+const isDark = useDark({
+	selector: "html",
+	attribute: "color-scheme",
+	valueDark: "dark",
+	valueLight: "light",
+})
+const toggleDark = useToggle(isDark)
 
 const colorDialogV = ref(false)
 const activeTab = ref("红色系")
@@ -53,7 +62,7 @@ const animateModeList = [
 						inactive-value="light"
 						active-action-icon="Moon"
 						inactive-action-icon="Sunny"
-						@change="settingStore.setThemeBg"
+						@change="toggleDark()"
 						style="--el-switch-on-color: #18181c; --el-switch-off-color: #dadada"></el-switch>
 				</el-col>
 			</el-row>
@@ -63,7 +72,7 @@ const animateModeList = [
 				</el-col>
 				<el-col style="display: flex; justify-content: center; height: 80px">
 					<el-radio-group v-model="settingStore.layoutTheme" @change="settingStore.setThemeType">
-						<el-radio label="classic" class="radio" style="height: 100%">
+						<el-radio value="classic" class="radio" style="height: 100%">
 							<el-row style="height: 40px; width: 50px">
 								<el-col
 									:span="6"
@@ -74,7 +83,7 @@ const animateModeList = [
 							</el-row>
 							<el-row justify="center">左右</el-row>
 						</el-radio>
-						<el-radio label="topb" class="radio">
+						<el-radio value="topb" class="radio">
 							<el-row style="height: 40px; width: 50px">
 								<el-col
 									:span="24"

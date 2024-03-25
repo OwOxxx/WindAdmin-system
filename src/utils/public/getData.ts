@@ -15,7 +15,7 @@ export function useGetBreadcrumbList() {
 			() => router.currentRoute.value.path,
 			() => {
 				visitedViewStore.breadcrumbList.length = 0
-				generatorList(PermissionStore.permissionRoutes)
+				generatorList(PermissionStore.permissionRoutes, visitedViewStore)
 			},
 			{ immediate: true }
 		)
@@ -26,13 +26,12 @@ export function useGetBreadcrumbList() {
 	})
 }
 
-function generatorList(Routes: Array<any>) {
-	const visitedViewStore = useVisitedViewStore()
+function generatorList(Routes: Array<any>, visitedViewStore: any) {
 	Routes.forEach(item => {
 		if (router.currentRoute.value.path.includes(item.path)) {
 			visitedViewStore.breadcrumbList.push(item)
 			if (item.children) {
-				generatorList(item.children)
+				generatorList(item.children, visitedViewStore)
 			}
 		}
 	})
