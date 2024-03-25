@@ -188,7 +188,7 @@ export const adminRoutes = [
 			},
 			{
 				parentPath: "/other",
-				menuUrl: "http://www.vueadminwork.com",
+				menuUrl: "http://www.baidu.com",
 				menuName: "外链（官网）",
 			},
 			{
@@ -215,25 +215,6 @@ export const adminRoutes = [
 				parentPath: "/other",
 				menuUrl: "/other/city-selector",
 				menuName: "省市区选择器",
-			},
-		],
-	},
-	{
-		menuUrl: "/result",
-		menuName: "结果页面",
-		iconPrefix: "iconfont",
-		icon: "menu-default",
-		parentPath: "",
-		children: [
-			{
-				parentPath: "/result",
-				menuUrl: "/result/success",
-				menuName: "成功页面",
-			},
-			{
-				parentPath: "/result",
-				menuUrl: "/result/fail",
-				menuName: "失败页面",
 			},
 		],
 	},
