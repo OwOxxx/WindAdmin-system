@@ -64,6 +64,10 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
 					find: "@/",
 					replacement: path.resolve(process.cwd(), "src") + "/",
 				},
+				{
+					find: "~/",
+					replacement: path.resolve(process.cwd(), "") + "/",
+				},
 			],
 		},
 	}

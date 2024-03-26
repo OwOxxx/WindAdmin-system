@@ -8,3 +8,4 @@ export const AMAP_SDK_URL = "https://webapi.amap.com/maps?v=&key=6aa0c6346fa679f
 export const TENCENT_MAP_SDK_URL =
 	"https://map.qq.com/api/gljs?v=1.exp&key=A6DBZ-KXPLW-JKSRY-ONZF4-CPHY3-K6BL7"
 
+export const AMAP_KEY = '6aa0c6346fa679fe22baa6072268ea54'
