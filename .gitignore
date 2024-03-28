@@ -3,4 +3,5 @@ dist
 
 // 忽略文件
 pnpm-lock.yaml
+stats.html
 ```
