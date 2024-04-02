@@ -1,27 +1,6 @@
-<template>
-	<div class="card-draggable">
-		<draggable
-			:list="myList"
-			ghost-class="ghost"
-			chosen-class="chosenClass"
-			:component-data="{
-				tag: 'ul',
-				class: 'list-group',
-			}"
-			animation="300"
-			@start="onStart"
-			@end="onEnd"
-			item-key="id">
-			<template #item="{ element }">
-				<li class="list-group-item">
-					{{ element.name }}
-				</li>
-			</template>
-		</draggable>
-	</div>
-</template>
-<script setup>
-import { ref, reactive } from "vue"
+<script setup lang="ts">
+import { onRenderTracked, onRenderTriggered } from "vue"
+import { ref, reactive, onMounted } from "vue"
 import draggable from "vuedraggable"
 /*
 draggable 对CSS样式没有什么要求万物皆可拖拽
@@ -48,7 +27,36 @@ const onStart = () => {
 const onEnd = () => {
 	console.log("结束拖拽")
 }
+
+onMounted(() => {
+	console.log("mounted")
+	console.log(this)
+})
 </script>
+
+<template>
+	<div class="card-draggable">
+		<draggable
+			:list="myList"
+			ghost-class="ghost"
+			chosen-class="chosenClass"
+			:component-data="{
+				tag: 'ul',
+				class: 'list-group',
+			}"
+			animation="300"
+			@start="onStart"
+			@end="onEnd"
+			item-key="id">
+			<template #item="{ element }">
+				<li class="list-group-item">
+					{{ element.name }}
+				</li>
+			</template>
+		</draggable>
+	</div>
+</template>
+
 <style scoped lang="scss">
 .card-draggable {
 	height: 100%;

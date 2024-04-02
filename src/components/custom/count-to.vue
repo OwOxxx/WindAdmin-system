@@ -6,8 +6,6 @@ import { isNumber } from "@/utils"
 defineOptions({ name: "CountTo" })
 
 type TransitionKey = keyof typeof TransitionPresets
-
-console.log(isNumber(87968))
 interface Props {
 	/** 初始值 */
 	startValue?: number
