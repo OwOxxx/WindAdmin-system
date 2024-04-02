@@ -23,6 +23,7 @@ const router = createRouter({
 })
 
 export async function installRouter(app: App) {
+	console.log(12412)
 	app.use(router)
 	useGuard()
 	await router.isReady()

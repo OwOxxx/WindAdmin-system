@@ -62,7 +62,7 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
 			},
 		},
 		esbuild: {
-			drop: ["console", "debugger"], // 去掉console和debugger
+			drop: command === "build" ? ["console", "debugger"] : [], // 去掉console和debugger
 		},
 		server: {
 			open: true,

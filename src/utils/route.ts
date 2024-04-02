@@ -1,7 +1,6 @@
 import { LAYOUT } from "@/store/common"
 import { resolve } from "path-browserify"
 import { toHump } from "@/utils"
-import { h } from "vue"
 
 export function loadComponents() {
 	return import.meta.glob("/src/views/**/*.vue")
@@ -10,7 +9,9 @@ export function loadComponents() {
 export const asynComponents = loadComponents()
 
 export function getComponent(it) {
-	return asynComponents[getFilePath(it)]
+	return (
+		asynComponents[getFilePath(it)] || asynComponents[getFilePath(it).replace(".vue", "/index.vue")]
+	)
 }
 
 export function getFilePath(it) {
@@ -59,6 +60,7 @@ export function mapTwoLevelRouter(srcRoutes: Array<any>) {
 }
 
 export function generateDynamicRoutes(routes) {
+	console.log(routes)
 	return routes.map(it => {
 		const isMenuFlag = isMenu(it)
 		let route = {
