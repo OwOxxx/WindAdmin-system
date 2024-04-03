@@ -31,21 +31,6 @@
   - [预览地址](https://wind.flamestart.top)
   - [Github 仓库](https://github.com/OwOxxx/WindAdmin-system)
 
-## 示例图片
-
-![](https://Windjs-1300612522.cos.ap-guangzhou.myqcloud.com/uPic/Wind-admin-v1-01.png)
-![](https://Windjs-1300612522.cos.ap-guangzhou.myqcloud.com/uPic/Wind-admin-v1-02.png)
-![](https://Windjs-1300612522.cos.ap-guangzhou.myqcloud.com/uPic/Wind-admin-v1-03.png)
-![](https://Windjs-1300612522.cos.ap-guangzhou.myqcloud.com/uPic/Wind-admin-v1-04.png)
-![](https://Windjs-1300612522.cos.ap-guangzhou.myqcloud.com/uPic/Wind-admin-v1-05.png)
-![](https://Windjs-1300612522.cos.ap-guangzhou.myqcloud.com/uPic/Wind-admin-v1-06.png)
-![](https://Windjs-1300612522.cos.ap-guangzhou.myqcloud.com/uPic/Wind-admin-v1-07.png)
-![](https://Windjs-1300612522.cos.ap-guangzhou.myqcloud.com/uPic/Wind-admin-v1-08.png)
-![](https://Windjs-1300612522.cos.ap-guangzhou.myqcloud.com/uPic/Wind-admin-v1-09.png)
-![](https://Windjs-1300612522.cos.ap-guangzhou.myqcloud.com/uPic/Wind-admin-v1-10.png)
-![](https://Windjs-1300612522.cos.ap-guangzhou.myqcloud.com/uPic/Wind-admin-v1-mobile.png)
-
-
 ## 使用
 
 **环境准备**
