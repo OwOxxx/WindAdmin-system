@@ -6,7 +6,7 @@ export const useSettingStore = defineStore("setting", {
 		drawer_switch: false, // 侧边栏设置开关
 		isCollapse: false, // 菜单栏展开收缩
 		layoutTheme: "classic", // classic, topb
-		themeBg: "dark", // dark, light
+		themeBg: "light", // dark, light
 		themeColor: "#1890ff", // 主题颜色
 		transitionAnimation: "zoom-out", // zoom-fade, zoom-out, slide-right, slide-up
 	}),

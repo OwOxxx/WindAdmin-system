@@ -3,10 +3,6 @@ import { computed } from "vue"
 import { useSettingStore } from "@/store"
 
 const settingStore = useSettingStore()
-
-const activeMenuBg = computed(() => {
-	return settingStore.themeColor
-})
 </script>
 
 <template>
