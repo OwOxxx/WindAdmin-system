@@ -7,7 +7,7 @@ const draggableStore = useDraggableStore()
 const FormDrag = byNameGetWidgetCom("formDrag")
 
 // 左侧布局组件库
-const activeLeft_origin = "components"
+const activeLeft_origin = ref("components")
 const containersList = generateDragTemplateList(containers)
 const basicFieldsList = generateDragTemplateList(basicFields)
 const advancedFieldsList = generateDragTemplateList(advancedFields)
@@ -17,7 +17,7 @@ const handleLeftTabClick = tab => {
 // 中间表单模板
 
 // 右侧表单或者组件设置
-const activeRight_set = "componentSet"
+const activeRight_set = ref("componentSet")
 draggableStore.formConfig = formConfig
 const handleRightTabClick = tab => {
 	console.log(tab)
