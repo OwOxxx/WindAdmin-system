@@ -1,6 +1,5 @@
 // 注册全局属性等
 import { App } from "vue"
-
 // 引入element-plus
 import ElementPlus from "element-plus"
 import "element-plus/dist/index.css"

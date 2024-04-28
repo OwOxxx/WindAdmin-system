@@ -23,7 +23,7 @@ html[color-scheme="dark"] {
 }
 
 html[color-scheme="light"] {
-	--bg-color: #fefefe;;
+	--bg-color: #fefefe;
 	--text-color: #333;
 	--border-color: #ccc;
 	--border-color-light: #ddd;
@@ -53,5 +53,8 @@ html[color-scheme="light"] {
 
 	--theme-color: var(--primary-color);
 	--menu-color-hover: rgba(90, 200, 250, 0.3);
-	--tabbar-color-hover: rgba(90, 200, 250, 0.3);
+	--tabbar-color-hover: rgba(90, 200, 250, 0.2);
+	--draggable-color-hover: rgba(90, 200, 250, 0.1);
+
+	--grid-col: 2;
 }

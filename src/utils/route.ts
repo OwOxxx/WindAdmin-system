@@ -60,7 +60,6 @@ export function mapTwoLevelRouter(srcRoutes: Array<any>) {
 }
 
 export function generateDynamicRoutes(routes) {
-	console.log(routes)
 	return routes.map(it => {
 		const isMenuFlag = isMenu(it)
 		let route = {

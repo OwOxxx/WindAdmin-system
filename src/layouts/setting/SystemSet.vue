@@ -58,8 +58,8 @@ const animateModeList = [
 				<el-col :span="6">
 					<el-switch
 						v-model="settingStore.themeBg"
-						active-value="dark"
-						inactive-value="light"
+						active-value="light"
+						inactive-value="dark"
 						active-action-icon="Moon"
 						inactive-action-icon="Sunny"
 						@change="toggleDark()"

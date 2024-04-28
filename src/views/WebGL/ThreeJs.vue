@@ -472,6 +472,7 @@ onMounted(() => {
 				<strong>空格</strong>
 			</p>
 			<p>观察: 移动鼠标</p>
+			<p>暂停: Esc</p>
 		</div>
 	</div>
 	<div class="container_three" ref="webglContainer"></div>
@@ -483,7 +484,7 @@ onMounted(() => {
 	width: 100%;
 	height: 100%;
 	/* background: linear-gradient(57deg, #c004048f, #0000006b); */
-	color: #fffae5;
+	color: black;
 	font-size: 3vmin;
 	letter-spacing: 0.5vmin;
 }
@@ -500,6 +501,7 @@ p:nth-child(2) {
 	font-size: 3vmin;
 	letter-spacing: 1vmin;
 	background-color: #00000088;
+	color: white;
 	border-radius: 1vmin;
 	padding: 1vmin 3vmin;
 }

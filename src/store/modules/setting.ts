@@ -42,6 +42,7 @@ export const useSettingStore = defineStore("setting", {
 			document.documentElement.style.setProperty("--theme-color", themeColor)
 			document.documentElement.style.setProperty("--menu-color-hover", this.getMenuActiveBg(0.3))
 			document.documentElement.style.setProperty("--tabbar-color-hover", this.getMenuActiveBg(0.2))
+			document.documentElement.style.setProperty("--draggable-color-hover", this.getMenuActiveBg(0.1))
 		},
 		// 设置默认主题颜色
 		setDefaultThemeColor() {},

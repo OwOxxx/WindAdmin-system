@@ -1,3 +1,5 @@
+import { isArray, isFunction, isObject } from "@/utils/common"
+
 // 根据dom节点修改css样式
 export function setStyle(element: HTMLElement, style: Record<string, string>): void {
 	for (const key in style) {
@@ -41,4 +43,24 @@ export function toHump(str: string): string {
 		.replace(/(\s|^)[a-z]/g, function (char) {
 			return char.toUpperCase()
 		})
+}
+
+type ObjectOrArray = Array<any> | object
+const isObjectOrArray = it => isObject(it) || isArray(it)
+
+export function deepClone(from, hash = new Map()) {
+	// if (isFunction(from)) {
+	// 	throw "You cannot clone a function"
+	// }
+	if (!isObjectOrArray(from)) return from
+	if (hash.get(from)) return hash.get(from)
+	const to: ObjectOrArray = Array.isArray(from) ? [] : {}
+	hash.set(from, to)
+	for (const key in from) {
+		if (Object.prototype.hasOwnProperty.call(from, key)) {
+			const element = from[key]
+			to[key] = deepClone(element, hash)
+		}
+	}
+	return to
 }

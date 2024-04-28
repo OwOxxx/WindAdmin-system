@@ -9,7 +9,10 @@ export default defineConfig({
 	transformers: [transformerDirectives()],
 	shortcuts: {
 		"wh-full": "w-full h-full",
+		"drag-b": "b-dashed b-1 b-color-[var(--theme-color)]",
+		"container-grid": "grid grid-cols-[repeat(var(--grid-col),1fr)] min-h-50",
 		"flex-center": "flex justify-center items-center",
+		"flex-end": "flex justify-end items-center",
 		"flex-col-center": "flex-center flex-col",
 		"flex-x-center": "flex justify-center",
 		"flex-y-center": "flex items-center",

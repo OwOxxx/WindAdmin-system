@@ -9,7 +9,6 @@ NProgress.configure({ showSpinner: false })
 
 export function usePermissionGuard() {
 	router.beforeEach(async (to, from) => {
-		console.log(to)
 		NProgress.start()
 		document.title = (to.meta?.title || "UMS").toString()
 		if (whiteRoutes.includes(to.path)) {
@@ -32,7 +31,6 @@ export function usePermissionGuard() {
 			await userPermissionStore.initPermissionRoutes()
 			return { ...to, replace: true }
 		}
-		console.log(router.getRoutes())
 		return true
 	})
 

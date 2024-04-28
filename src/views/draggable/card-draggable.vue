@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { onRenderTracked, onRenderTriggered } from "vue"
-import { ref, reactive, onMounted } from "vue"
+import { ref, isRef, reactive, onMounted } from "vue"
 import draggable from "vuedraggable"
 /*
 draggable 对CSS样式没有什么要求万物皆可拖拽
+sort=false                       //是否可以排序
 :list="state.list"         //需要绑定的数组
 ghost-class="ghost"        //被替换元素的样式
 chosen-class="chosenClass" //选中元素的样式
@@ -16,6 +17,16 @@ const list = new Array(64).fill(0).map((_, index) => ({
 	name: `item-${index + 1}`,
 }))
 
+const testList = ref([])
+testList.value = [
+	1,
+	2,
+	{
+		a: 23,
+	},
+]
+console.log(isRef(testList))
+
 const myList = reactive(list)
 
 //拖拽开始的事件
@@ -26,6 +37,7 @@ const onStart = () => {
 //拖拽结束的事件
 const onEnd = () => {
 	console.log("结束拖拽")
+	testList.value[2].a = 456
 }
 
 onMounted(() => {
@@ -39,6 +51,7 @@ onMounted(() => {
 		<draggable
 			:list="myList"
 			ghost-class="ghost"
+			forceFallback="true"
 			chosen-class="chosenClass"
 			:component-data="{
 				tag: 'ul',
@@ -50,7 +63,7 @@ onMounted(() => {
 			item-key="id">
 			<template #item="{ element }">
 				<li class="list-group-item">
-					{{ element.name }}
+					{{ element.name }}{{ testList }}
 				</li>
 			</template>
 		</draggable>
@@ -70,7 +83,7 @@ onMounted(() => {
 			justify-content: center;
 			align-items: center;
 			background-color: var(--menu-color-hover);
-			margin: 20px;
+			margin: 10px;
 			border: 1px solid #eee;
 			aspect-ratio: 1;
 			cursor: move;

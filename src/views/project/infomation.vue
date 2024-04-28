@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { reactive } from "vue"
 import { Iphone, Location, OfficeBuilding, Tickets, User } from "@element-plus/icons-vue"
 import packageJson from "~/package.json"
 function getTabelData(obj: Object) {

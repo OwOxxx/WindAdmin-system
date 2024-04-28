@@ -1,4 +1,5 @@
 import vue from "@vitejs/plugin-vue"
+import vueJsx from "@vitejs/plugin-vue-jsx"
 import { defineConfig, UserConfigExport, ConfigEnv } from "vite"
 import { viteMockServe } from "vite-plugin-mock"
 import path from "path"
@@ -26,7 +27,10 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
 		base: "/",
 		plugins: [
 			vue(),
+			vueJsx(),
 			AutoImport({
+				imports: ["vue"], // 自动导入来自vue的方法等
+				dts: "./auto-imports.d.ts",
 				resolvers: [ElementPlusResolver()],
 			}),
 			Components({
