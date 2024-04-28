@@ -52,31 +52,29 @@ function inputChanged(value) {
 </script>
 
 <template>
-	<div>
-		<draggable
-			v-model="props.itemList"
-			animation="300"
-			forceFallback="true"
-			:component-data="getComponentData()"
-			tag="ul"
-			:sort="false"
-			:group="{
-				name: 'componentList',
-				pull: 'clone',
-				put: false,
-			}"
-			:clone="cloneComponent"
-			@change="log"
-			ghost-class="ghostClass"
-			chosen-class="chosenClass"
-			item-key="id">
-			<template #item="{ element }">
-				<li class="list-group-item">
-					<span>{{ element.name }}</span>
-				</li>
-			</template>
-		</draggable>
-	</div>
+	<draggable
+		v-model="props.itemList"
+		animation="300"
+		forceFallback="true"
+		:component-data="getComponentData()"
+		tag="ul"
+		:sort="false"
+		:group="{
+			name: 'componentList',
+			pull: 'clone',
+			put: false,
+		}"
+		:clone="cloneComponent"
+		@change="log"
+		ghost-class="ghostClass"
+		chosen-class="chosenClass"
+		item-key="id">
+		<template #item="{ element }">
+			<li class="list-group-item">
+				<span>{{ element.name }}</span>
+			</li>
+		</template>
+	</draggable>
 </template>
 
 <style lang="scss" scoped>
