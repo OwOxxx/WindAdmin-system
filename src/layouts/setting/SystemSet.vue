@@ -8,9 +8,10 @@ import { useDark, useToggle } from "@vueuse/core"
 const isDark = useDark({
 	selector: "html",
 	attribute: "color-scheme",
-	valueDark: "dark",
 	valueLight: "light",
+	valueDark: "dark",
 })
+isDark.value = false
 const toggleDark = useToggle(isDark)
 
 const colorDialogV = ref(false)
@@ -58,8 +59,8 @@ const animateModeList = [
 				<el-col :span="6">
 					<el-switch
 						v-model="settingStore.themeBg"
-						active-value="light"
-						inactive-value="dark"
+						active-value="dark"
+						inactive-value="light"
 						active-action-icon="Moon"
 						inactive-action-icon="Sunny"
 						@change="toggleDark()"

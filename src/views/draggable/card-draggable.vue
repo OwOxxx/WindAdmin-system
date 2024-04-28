@@ -17,16 +17,6 @@ const list = new Array(64).fill(0).map((_, index) => ({
 	name: `item-${index + 1}`,
 }))
 
-const testList = ref([])
-testList.value = [
-	1,
-	2,
-	{
-		a: 23,
-	},
-]
-console.log(isRef(testList))
-
 const myList = reactive(list)
 
 //拖拽开始的事件
@@ -37,7 +27,6 @@ const onStart = () => {
 //拖拽结束的事件
 const onEnd = () => {
 	console.log("结束拖拽")
-	testList.value[2].a = 456
 }
 
 onMounted(() => {
@@ -63,7 +52,7 @@ onMounted(() => {
 			item-key="id">
 			<template #item="{ element }">
 				<li class="list-group-item">
-					{{ element.name }}{{ testList }}
+					{{ element.name }}
 				</li>
 			</template>
 		</draggable>

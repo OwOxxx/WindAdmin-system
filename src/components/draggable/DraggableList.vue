@@ -36,7 +36,7 @@ function getComponentData() {
 			wrap: true,
 		},
 		props: {
-			value: this.activeNames,
+			value: null,
 		},
 		class: "list-group",
 	}
@@ -47,7 +47,6 @@ function handleChange() {
 }
 function inputChanged(value) {
 	console.log(value, "inputchanged")
-	this.activeNames = value
 }
 </script>
 

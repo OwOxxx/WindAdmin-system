@@ -6,7 +6,8 @@
 	"author": "zhw",
 	"scripts": {
 		"dev": "vite --host",
-		"build": "vite build"
+		"build": "vite build",
+		"preview": "vite preview"
 	},
 	"dependencies": {
 		"@amap/amap-jsapi-loader": "^1.0.1",
